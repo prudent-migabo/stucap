@@ -64,6 +64,11 @@ class AppThemeData {
       ),
     ),
     textTheme: const TextTheme(
+      displayLarge: TextStyle(
+        fontSize: 60.0,
+        fontWeight: FontWeight.w800,
+        color: textBlack,
+      ),
       displayMedium: TextStyle(
         fontSize: 54.0,
         fontWeight: FontWeight.w700,
