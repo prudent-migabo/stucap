@@ -7,6 +7,8 @@ class RouteGenerator {
     switch (settings.name) {
       case SplashScreen.routeName :
         return MaterialPageRoute(builder: (context) => SplashScreen());
+      case LoginScreen.routeName :
+        return MaterialPageRoute(builder: (context) => LoginScreen());
       default:
         return errorRoute();
     }

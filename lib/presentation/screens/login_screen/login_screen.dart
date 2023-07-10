@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:stucap/config/app_theme.dart';
 
 import '../../../static/data_values.dart';
 
 class LoginScreen extends StatelessWidget {
+  static const String routeName = '/LoginScreen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,21 +16,45 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('STUCAP', style: Theme.of(context).textTheme.displaySmall,),
-              const SizedBox(height: 20,),
+              Text(DataValues.loginTitle, style: TextStyle(
+                color: AppThemeData.primaryColor,
+                fontSize: AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
+                fontWeight: AppThemeData.lightTheme.textTheme.displaySmall!.fontWeight,
+              ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 30,),
               TextFormField(
                 decoration: const InputDecoration(
                   hintText: DataValues.emailHintAndLabel,
                   labelText: DataValues.emailHintAndLabel,
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppThemeData.textGreyDark,
+                  ),
                 ),
               ),
-              const SizedBox(height: 15,),
+              const SizedBox(height: 30,),
               TextFormField(
                 decoration: const InputDecoration(
                   hintText: DataValues.passwordHintAndLabel,
                   labelText: DataValues.passwordHintAndLabel,
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: AppThemeData.textGreyDark,
+                  ),
                 ),
               ),
+              const SizedBox(height: 40,),
+              SizedBox(
+                height: 60,
+                  child: ElevatedButton(onPressed: (){}, child: Text(
+                    DataValues.loginElevatedButtonTitle,
+                    style: TextStyle(
+                      fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                      fontWeight: AppThemeData.lightTheme.textTheme.titleMedium!.fontWeight,
+                    ),
+                  ),)),
             ],
           ),
         ),

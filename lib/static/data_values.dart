@@ -8,5 +8,5 @@ class DataValues {
   static const String loginTitle = 'STUCAP';
   static const String emailHintAndLabel = 'Email';
   static const String passwordHintAndLabel = 'Mot de passe';
-
+  static const String loginElevatedButtonTitle = 'Se connecter';
 }

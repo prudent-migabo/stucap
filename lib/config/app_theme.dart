@@ -55,6 +55,15 @@ class AppThemeData {
           borderRadius: BorderRadius.zero,
           borderSide: BorderSide(color: primaryColor, width: 2)
       ),
+      // labelStyle: TextStyle(
+      //     fontSize: 16.0,
+      //     fontWeight: FontWeight.w500,
+      //     color: AppThemeData.textGreyDark,
+      // ),
+      hintStyle: TextStyle(
+          fontSize: 16.0,
+          fontWeight: FontWeight.w500,
+          color: AppThemeData.textGreyDark),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: primaryColor,
