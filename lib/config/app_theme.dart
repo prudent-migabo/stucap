@@ -47,11 +47,13 @@ class AppThemeData {
       selectionHandleColor: textPrimary,
     ),
     inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: UnderlineInputBorder(
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.zero,
           borderSide: BorderSide(color: primaryColor)
       ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: primaryColor, width: 2),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.zero,
+          borderSide: BorderSide(color: primaryColor, width: 2)
       ),
     ),
     appBarTheme: const AppBarTheme(

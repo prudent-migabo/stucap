@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stucap/static/data_values.dart';
 
 import '../../../config/app_theme.dart';
 
@@ -15,13 +16,13 @@ class SplashScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text('STUCAP', style: TextStyle(
+              Text(DataValues.splashTitle, style: TextStyle(
                 color: AppThemeData.textWhite,
                 fontSize: AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
                 fontWeight: AppThemeData.lightTheme.textTheme.displaySmall!.fontWeight,
               ),),
               const SizedBox(height: 5),
-              Text("L'efficacité dans l'éducation", style: TextStyle(
+              Text(DataValues.splashDescription, style: TextStyle(
                 color: AppThemeData.textWhite,
                 fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
                 fontWeight: AppThemeData.lightTheme.textTheme.titleSmall!.fontWeight,
