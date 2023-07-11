@@ -24,6 +24,7 @@ class AppThemeData {
   static const backgroundWhite = Color.fromRGBO(255, 255, 255, 1.0);
   static const backgroundGrey = Color.fromRGBO(25, 25, 25, 1.0);
   static const cardGrey = Color.fromRGBO(15, 15, 15, 1.0);
+  static const cardBlue = Color.fromRGBO(21, 101, 192, 1.0);
   static const tooltip = Color.fromRGBO(33, 33, 33, 1.0);
 
   // Colors: Opacity
@@ -41,39 +42,6 @@ class AppThemeData {
     scaffoldBackgroundColor: secondaryColor,
     fontFamily: 'Poppins',
     iconTheme: const IconThemeData(color: iconPrimary),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: primaryColor,
-      selectionColor: textCursor,
-      selectionHandleColor: textPrimary,
-    ),
-    inputDecorationTheme: const InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.zero,
-          borderSide: BorderSide(color: primaryColor)
-      ),
-      focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.zero,
-          borderSide: BorderSide(color: primaryColor, width: 2)
-      ),
-      // labelStyle: TextStyle(
-      //     fontSize: 16.0,
-      //     fontWeight: FontWeight.w500,
-      //     color: AppThemeData.textGreyDark,
-      // ),
-      hintStyle: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w500,
-          color: AppThemeData.textGreyDark),
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: primaryColor,
-    ),
-    elevatedButtonTheme: const ElevatedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor: MaterialStatePropertyAll(buttonPrimary),
-        elevation: MaterialStatePropertyAll(2.0),
-      ),
-    ),
     textTheme: const TextTheme(
       displayLarge: TextStyle(
         fontSize: 60.0,
@@ -95,7 +63,7 @@ class AppThemeData {
           color: AppThemeData.textBlack),
       titleLarge: TextStyle(
           fontSize: 20.0,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           color: AppThemeData.textGreyDark),
       titleMedium: TextStyle(
           fontSize: 18.0,
@@ -115,5 +83,29 @@ class AppThemeData {
           color: AppThemeData.textBlack),
     ),
     colorScheme: const ColorScheme.light().copyWith(background: backgroundWhite),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: primaryColor,
+      selectionColor: textCursor,
+      selectionHandleColor: textPrimary,
+    ),
+    inputDecorationTheme:  InputDecorationTheme(
+      enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: primaryColor)
+      ),
+      focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: primaryColor, width: 2)
+      ),
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: primaryColor,
+    ),
+    elevatedButtonTheme: const ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll(buttonPrimary),
+        elevation: MaterialStatePropertyAll(2.0),
+      ),
+    ),
   );
 }

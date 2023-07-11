@@ -9,6 +9,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => SplashScreen());
       case LoginScreen.routeName :
         return MaterialPageRoute(builder: (context) => LoginScreen());
+      case HomeScreen.routeName :
+        return MaterialPageRoute(builder: (context) => HomeScreen());
       default:
         return errorRoute();
     }
