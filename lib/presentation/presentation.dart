@@ -9,3 +9,4 @@ export 'screens/presence_scanner_tab/presence_scanner_tab.dart';
 
 
 export 'widgets/custom_card.dart';
+export 'widgets/custom_appbar.dart';

@@ -21,4 +21,7 @@ class DataValues {
 
   //PRESENCE
   static const String presenceTitle = 'CHOISISSEZ UNE PROPOTION';
+
+  // PRESENCE SCANNER TAB
+  static const String presencesScannerButtonTitle = 'Scannez le code QR';
 }

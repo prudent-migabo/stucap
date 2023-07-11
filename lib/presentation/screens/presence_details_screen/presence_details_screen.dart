@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stucap/presentation/presentation.dart';
 
 class PresenceDetailsScreen extends StatefulWidget {
   static const String routeName = '/PresenceDetailsScreen';
@@ -13,7 +14,7 @@ class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
 
   int _selectedIndex = 0;
   List<Widget> _pages = [
-
+    PresenceScannerTab(),
   ];
 
   @override
