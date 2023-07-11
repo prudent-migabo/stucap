@@ -8,7 +8,7 @@ class AppThemeData {
   // Colors: Text
   static const textPrimary = primaryColor;
   static const textWhite = Color.fromRGBO(255, 255, 255, 1.0);
-  static const textBlack = Color.fromRGBO(0, 0, 0, 1.0);
+  static const textBlack = Color.fromRGBO(25, 25, 25, 1.0);
   static const textGreyDark = Color.fromRGBO(147, 147, 147, 1.0);
   static const textGreyLight = Color.fromRGBO(205, 205, 205, 1.0);
   static const textCursor = Color.fromRGBO(61, 61, 61, 1.0);
@@ -17,7 +17,7 @@ class AppThemeData {
   static const buttonPrimary = primaryColor;
   static const buttonSecondary = Color.fromRGBO(50, 50, 50, 1.0);
   static const iconPrimary = primaryColor;
-  static const iconSecondary = Color.fromRGBO(255, 255, 255, 1.0);
+  static const iconSecondary = Color.fromRGBO(25, 25, 25, 1.0);
 
   // Colors: Background and Cards
   static const backgroundBlack = Color.fromRGBO(18, 18, 18, 1.0);
@@ -64,7 +64,7 @@ class AppThemeData {
       titleLarge: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
-          color: AppThemeData.textGreyDark),
+          color: AppThemeData.textBlack),
       titleMedium: TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.w500,

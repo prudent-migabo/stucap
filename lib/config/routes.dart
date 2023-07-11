@@ -6,11 +6,13 @@ class RouteGenerator {
     print(settings.name);
     switch (settings.name) {
       case SplashScreen.routeName :
-        return MaterialPageRoute(builder: (context) => SplashScreen());
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
       case LoginScreen.routeName :
-        return MaterialPageRoute(builder: (context) => LoginScreen());
+        return MaterialPageRoute(builder: (context) => const LoginScreen());
       case HomeScreen.routeName :
-        return MaterialPageRoute(builder: (context) => HomeScreen());
+        return MaterialPageRoute(builder: (context) => const HomeScreen());
+      case PresenceScreen.routeName :
+        return MaterialPageRoute(builder: (context) => const PresenceScreen());
       default:
         return errorRoute();
     }

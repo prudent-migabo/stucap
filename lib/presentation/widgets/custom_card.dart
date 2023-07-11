@@ -22,11 +22,11 @@ class CustomCard extends StatelessWidget {
           child: Text(
             cardTitle,
             style: TextStyle(
-              color: isOnBlackBackground ? AppThemeData.textWhite : AppThemeData.textBlack,
+              color: AppThemeData.textWhite,
               fontSize: AppThemeData
                   .lightTheme.textTheme.titleMedium!.fontSize,
               fontWeight: AppThemeData
-                  .lightTheme.textTheme.titleLarge!.fontWeight,
+                  .lightTheme.textTheme.headlineSmall!.fontWeight,
             ),
           ),
         ),

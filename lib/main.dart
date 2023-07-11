@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppThemeData.lightTheme,
       onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: PresenceScreen.routeName,
     );
   }
 }

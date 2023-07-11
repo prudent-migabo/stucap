@@ -18,4 +18,7 @@ class DataValues {
   static const String homeDescription = 'STUCAP';
   static const String homeCardTitle1 = 'PRESENCE';
   static const String homeCardTitle2 = 'VERIFICATION';
+
+  //PRESENCE
+  static const String presenceTitle = 'CHOISISSEZ UNE PROPOTION';
 }
