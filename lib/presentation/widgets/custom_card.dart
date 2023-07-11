@@ -23,8 +23,9 @@ class CustomCard extends StatelessWidget {
             cardTitle,
             style: TextStyle(
               color: AppThemeData.textWhite,
-              fontSize: AppThemeData
-                  .lightTheme.textTheme.titleMedium!.fontSize,
+              fontSize: isOnBlackBackground ? AppThemeData
+                  .lightTheme.textTheme.titleMedium!.fontSize : AppThemeData
+                  .lightTheme.textTheme.titleLarge!.fontSize,
               fontWeight: AppThemeData
                   .lightTheme.textTheme.headlineSmall!.fontWeight,
             ),

@@ -13,6 +13,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const HomeScreen());
       case PresenceScreen.routeName :
         return MaterialPageRoute(builder: (context) => const PresenceScreen());
+      case PresenceDetailsScreen.routeName :
+        return MaterialPageRoute(builder: (context) => const PresenceDetailsScreen());
       default:
         return errorRoute();
     }
