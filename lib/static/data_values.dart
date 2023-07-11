@@ -24,4 +24,7 @@ class DataValues {
 
   // PRESENCE SCANNER TAB
   static const String presencesScannerButtonTitle = 'Scannez le code QR';
+
+  // DAILY LIST STUDENT TAB
+  static const String dailyListStudentTabTitle = "Liste des étudiants présent aujourd'hui";
 }

@@ -4,6 +4,7 @@ export 'screens/home_screen/home_screen.dart';
 export 'screens/presence_screen/presence_screen.dart';
 export 'screens/presence_details_screen/presence_details_screen.dart';
 export 'screens/presence_scanner_tab/presence_scanner_tab.dart';
+export 'screens/daily_list_students_tab/daily_list_students_tab.dart';
 
 
 

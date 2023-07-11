@@ -15,6 +15,7 @@ class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
   int _selectedIndex = 0;
   List<Widget> _pages = [
     PresenceScannerTab(),
+    DailyListStudentTab(),
   ];
 
   @override

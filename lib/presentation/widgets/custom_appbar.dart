@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 PreferredSize customAppBar ({required VoidCallback onBackEvent, required String title}){
   return PreferredSize(
-      preferredSize: const Size.fromHeight(70),
+      preferredSize: const Size.fromHeight(65),
       child: AppBar(
     leading: GestureDetector(
       onTap: onBackEvent,
