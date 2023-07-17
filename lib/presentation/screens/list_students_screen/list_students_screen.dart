@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:stucap/config/app_theme.dart';
 import 'package:stucap/presentation/presentation.dart';
 
-class DailyListStudentTab extends StatelessWidget {
-  const DailyListStudentTab({Key? key}) : super(key: key);
+class ListStudentsScreen extends StatelessWidget {
+  static const String routeName = '/ListStudentsScreen';
+  ListStudentsScreen({Key? key, this.title}) : super(key: key);
+
+  String? title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
         onBackEvent: (){
-          Navigator.pop(context);
+          Navigator.pushNamedAndRemoveUntil(context, PresenceScreen.routeName, (route) => false);
         },
-        title: "Lo : Présence d'aujourd'hui",
+        title: title!,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
@@ -21,7 +23,7 @@ class DailyListStudentTab extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 15,
             itemBuilder: (context, index){
-              return const ListTile(
+              return ListTile(
                 leading: Icon(Icons.person),
                 title: Text('Namasele Paul'),
                 subtitle: Text('FA: 100\$'),

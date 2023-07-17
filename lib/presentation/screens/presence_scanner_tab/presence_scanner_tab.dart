@@ -12,7 +12,9 @@ class PresenceScannerTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        onBackEvent: (){},
+        onBackEvent: (){
+          Navigator.pop(context);
+        },
         title: 'Lo',
       ),
       body: Center(

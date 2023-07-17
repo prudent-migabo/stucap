@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stucap/presentation/presentation.dart';
 
+// import '../presentation/screens/list_students_screen/list_students_screen.dart';
+
 class RouteGenerator {
   static Route<dynamic> onGeneratedRoutes(RouteSettings settings) {
     print(settings.name);
@@ -15,6 +17,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const PresenceScreen());
       case PresenceDetailsScreen.routeName :
         return MaterialPageRoute(builder: (context) => const PresenceDetailsScreen());
+      case ListStudentsScreen.routeName :
+        return MaterialPageRoute(builder: (context) => ListStudentsScreen());
       default:
         return errorRoute();
     }

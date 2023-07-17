@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stucap/config/app_theme.dart';
 import 'package:stucap/presentation/presentation.dart';
 
 import 'config/routes.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'STUCAP',
       theme: AppThemeData.lightTheme,
       onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-      initialRoute: PresenceScreen.routeName,
+      initialRoute: SplashScreen.routeName,
     );
   }
 }

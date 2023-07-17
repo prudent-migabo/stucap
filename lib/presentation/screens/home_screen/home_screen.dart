@@ -54,9 +54,15 @@ class HomeScreen extends StatelessWidget {
                   CustomCard(
                     cardTitle: DataValues.homeCardTitle1,
                     isOnBlackBackground: true,
+                    onTap: (){
+                      Navigator.pushNamed(context, PresenceScreen.routeName);
+                    },
                   ),
                   const SizedBox(height: 20,),
                   CustomCard(
+                    onTap: (){
+                      Navigator.pushNamed(context, PresenceScreen.routeName);
+                    },
                     cardTitle: DataValues.homeCardTitle2,
                     isOnBlackBackground: true,
                   ),

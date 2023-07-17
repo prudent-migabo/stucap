@@ -19,8 +19,13 @@ class PresenceScreen extends StatelessWidget {
             Scaffold.of(context).openDrawer();
           }, icon: const Icon(Icons.menu, color: AppThemeData.iconSecondary,)),
         ),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+          }, icon: const Icon(Icons.home, color: AppThemeData.iconSecondary,),),
+        ],
       ),
-      drawer: navigationDrawer(),
+      drawer: navigationDrawer(context),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
@@ -38,7 +43,11 @@ class PresenceScreen extends StatelessWidget {
                 crossAxisCount: 2,
               shrinkWrap: true,
               children: [
-                CustomCard(cardTitle: 'Lo', isOnBlackBackground: false),
+                CustomCard(
+                  onTap: (){
+                    Navigator.pushNamed(context, PresenceDetailsScreen.routeName);
+                  },
+                    cardTitle: 'Lo', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'L1', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'L2', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'L3', isOnBlackBackground: false),

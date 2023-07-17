@@ -45,4 +45,13 @@ class DataValues {
   // NAVIGATION DRAWER
   static const String drawerTitle1 = "Etudiants";
   static const String drawerTitle2 = "Paramètres";
+  static const String drawerDescription1 = "Inscrits en L0";
+  static const String drawerDescription2 = "Inscrits en L1";
+  static const String drawerDescription3 = "Inscrits en L2";
+  static const String drawerDescription4 = "Inscrits en L3";
+  static const String drawerDescription5 = "Inscrits en M1";
+  static const String drawerDescription6 = "Inscrits en M2";
+  static const String settingsDescription1 = "Langues";
+  static const String settingsDescription2 = "Thème";
+
 }
