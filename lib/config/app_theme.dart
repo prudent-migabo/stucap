@@ -13,6 +13,7 @@ class AppThemeData {
   static const textGreyLight = Color.fromRGBO(205, 205, 205, 1.0);
   static const textCursor = Color.fromRGBO(61, 61, 61, 1.0);
   static const textGreen = Color.fromRGBO(46, 125, 50, 1.0);
+  static const errorTextColor = Color.fromRGBO(183, 28, 28, 1.0);
 
   // Colors: Buttons and Icons
   static const buttonPrimary = primaryColor;

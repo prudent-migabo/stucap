@@ -15,6 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   qr_flutter:
   firebase_core:
+  firebase_auth:
+  cloud_firestore:
+  bloc:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stucap/config/app_theme.dart';
+import 'package:stucap/static/constants.dart';
+
+import '../data/models/custom_error.dart';
 
 //// Method that throws the response alert dialog for scan event
 void scanPresencePopup(BuildContext context, {required Widget? content, required String title, VoidCallback? onPressed, Color? titleColor, Color? actionBtnColor}) {
@@ -58,4 +61,39 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
 
   showDialog(
       barrierDismissible: true, context: context, builder: (context) => alert);
+}
+
+
+/// Method that throws an error dialog box for the entire app
+void errorDialog(BuildContext context, {required CustomError? content}) {
+  final errorColor = Theme.of(context).colorScheme.error;
+  Widget okButton() {
+    return TextButton(onPressed: () => Navigator.pop(context), child: Text(
+      'OK',
+      style: TextStyle(
+        fontWeight: bold,
+        color: AppThemeData.errorTextColor,
+      ),
+    ),);
+  }
+
+
+  AlertDialog alert = AlertDialog(
+    title: Text(
+      'Erreur',
+      style: TextStyle(
+        fontWeight: bold,
+        color: AppThemeData.errorTextColor,
+      ),
+    ),
+    content: Text(
+      content!.message,
+    ),
+    actions: [
+      okButton(),
+    ],
+  );
+
+  showDialog(
+      barrierDismissible: false, context: context, builder: (context) => alert);
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap/business_logic/business_logic.dart';
 import 'package:stucap/presentation/presentation.dart';
 
 import '../../../config/app_theme.dart';
@@ -60,8 +62,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20,),
                   CustomCard(
-                    onTap: (){
-                      Navigator.pushNamed(context, PresenceScreen.routeName);
+                    onTap: () {
+                      context.read<LogoutCubit>().logout();
+                     Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
                     },
                     cardTitle: DataValues.homeCardTitle2,
                     isOnBlackBackground: true,

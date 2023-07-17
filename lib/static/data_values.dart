@@ -2,6 +2,10 @@ class DataValues {
   // APPLICATION
   static const String appTitle = 'STUCAP';
 
+  // TEXTS
+  static const String waitingText = "Patientez";
+  static const String welcomeText = "Bienvenue";
+
   // SPLASH
   static const String splashTitle = 'STUCAP';
   static const String splashDescription = "L'efficacité dans l'éducation";

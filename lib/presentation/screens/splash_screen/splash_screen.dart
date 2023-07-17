@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5), (){
-      Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
     });
     super.initState();
   }
