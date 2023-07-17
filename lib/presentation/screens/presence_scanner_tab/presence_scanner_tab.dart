@@ -6,7 +6,7 @@ import '../../../static/data_values.dart';
 import '../../../utils/dialog_alert.dart';
 
 class PresenceScannerTab extends StatelessWidget {
-  const PresenceScannerTab({Key? key}) : super(key: key);
+   const PresenceScannerTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +21,28 @@ class PresenceScannerTab extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               onPressed: (){
-                popupForScanPresenceAction(
+                scanVerificationPopup(
                   context,
-                  title: 'Scan présence',
+                  title: customCheckCard(
+                    isTrue: false,
+                  ),
                   content: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text("L'étudian MIKA BORONINA"),
-                      Text("De LO"),
-                      Text("A payé 300\$"),
-                      Text("Est présent aujourd'hui"),
+                      customRowPopupInfo(title: DataValues.studentTitle, description: DataValues.studentName),
+                      const SizedBox(height: 10,),
+                      customRowPopupInfo(title: DataValues.promotionTitle, description: DataValues.promotionDescription),
+                      const SizedBox(height: 10,),
+                      customRowPopupInfo(title: DataValues.academicFeesPaidTitle, description: DataValues.academicFeesDescription),
+                      const SizedBox(height: 10,),
+                      customRowPopupInfo(title: DataValues.academicFeesPaidDescription, description: DataValues.academicFeesDescription),
+                      const SizedBox(height: 10,),
+                      const Text(DataValues.confirmationVerificationMessage),
                     ],
                   ),
                 );
+
               },
               child:  Text(DataValues.presencesScannerButtonTitle, style: TextStyle(
                  fontWeight: AppThemeData.lightTheme.textTheme.titleMedium!.fontWeight,

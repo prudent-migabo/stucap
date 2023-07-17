@@ -27,4 +27,18 @@ class DataValues {
 
   // DAILY LIST STUDENT TAB
   static const String dailyListStudentTabTitle = "Liste des étudiants présent aujourd'hui";
+
+  // PRESENCE SCAN POPUP
+  static const String studentTitle = "L'étudiant:";
+  static const String studentName = "Kasoki lemba";
+  static const String promotionTitle = "Promotion:";
+  static const String promotionDescription = "L0";
+  static const String academicFeesTitle = "FA:";
+  static const String academicFeesDescription = "130\$";
+  static const String confirmationMessage = "Est desormais présent aujourd'hui.";
+
+  // VERIFICATION SCAN POPUP
+  static const String academicFeesPaidTitle = "FA payé:";
+  static const String academicFeesPaidDescription = "FA restant:";
+  static const String confirmationVerificationMessage = "N'est pas en ordre.";
 }

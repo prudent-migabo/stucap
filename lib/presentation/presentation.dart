@@ -11,3 +11,5 @@ export 'screens/daily_list_students_tab/daily_list_students_tab.dart';
 
 export 'widgets/custom_card.dart';
 export 'widgets/custom_appbar.dart';
+export 'widgets/custom_row.dart';
+export 'widgets/custom_check_card.dart';

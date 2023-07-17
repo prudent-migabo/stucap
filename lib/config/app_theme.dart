@@ -12,6 +12,7 @@ class AppThemeData {
   static const textGreyDark = Color.fromRGBO(147, 147, 147, 1.0);
   static const textGreyLight = Color.fromRGBO(205, 205, 205, 1.0);
   static const textCursor = Color.fromRGBO(61, 61, 61, 1.0);
+  static const textGreen = Color.fromRGBO(46, 125, 50, 1.0);
 
   // Colors: Buttons and Icons
   static const buttonPrimary = primaryColor;
@@ -23,6 +24,8 @@ class AppThemeData {
   static const backgroundBlack = Color.fromRGBO(18, 18, 18, 1.0);
   static const backgroundWhite = Color.fromRGBO(255, 255, 255, 1.0);
   static const backgroundGrey = Color.fromRGBO(25, 25, 25, 1.0);
+  static const backgroundRed = Color.fromRGBO(183, 28, 28, 1.0);
+  static const backgroundGreen = Color.fromRGBO(46, 125, 50, 1.0);
   static const cardGrey = Color.fromRGBO(15, 15, 15, 1.0);
   static const cardBlue = Color.fromRGBO(21, 101, 192, 1.0);
   static const tooltip = Color.fromRGBO(33, 33, 33, 1.0);
@@ -76,11 +79,11 @@ class AppThemeData {
       labelLarge: TextStyle(
           fontSize: 14.0,
           fontWeight: FontWeight.w400,
-          color: AppThemeData.textGreyDark),
+          color: AppThemeData.textBlack),
       labelMedium: TextStyle(
           fontSize: 12.0,
-          fontWeight: FontWeight.w500,
-          color: AppThemeData.textBlack),
+          fontWeight: FontWeight.w300,
+          color: AppThemeData.textGreyDark),
     ),
     colorScheme: const ColorScheme.light().copyWith(background: backgroundWhite),
     textSelectionTheme: const TextSelectionThemeData(
@@ -91,11 +94,11 @@ class AppThemeData {
     inputDecorationTheme:  InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: primaryColor)
+          borderSide: const BorderSide(color: primaryColor)
       ),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
-          borderSide: BorderSide(color: primaryColor, width: 2)
+          borderSide: const BorderSide(color: primaryColor, width: 2)
       ),
     ),
     appBarTheme: const AppBarTheme(
