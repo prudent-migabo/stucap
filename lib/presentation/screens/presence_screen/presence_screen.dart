@@ -20,7 +20,7 @@ class PresenceScreen extends StatelessWidget {
           }, icon: const Icon(Icons.menu, color: AppThemeData.iconSecondary,)),
         ),
       ),
-      drawer: Container(),
+      drawer: navigationDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(

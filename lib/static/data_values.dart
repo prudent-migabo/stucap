@@ -41,4 +41,8 @@ class DataValues {
   static const String academicFeesPaidTitle = "FA payé:";
   static const String academicFeesPaidDescription = "FA restant:";
   static const String confirmationVerificationMessage = "N'est pas en ordre.";
+
+  // NAVIGATION DRAWER
+  static const String drawerTitle1 = "Etudiants";
+  static const String drawerTitle2 = "Paramètres";
 }
