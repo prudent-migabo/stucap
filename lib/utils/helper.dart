@@ -38,3 +38,12 @@
 //     ],
 //   ),
 // );
+
+
+// if (!snapshot.hasData){
+//   noDataBanner();
+// } else if (snapshot.connectionState == ConnectionState.waiting){
+//   noDataBanner();
+// } else if (snapshot.hasError){
+//   errorDialog(context, content: CustomError(message: snapshot.error.toString()));
+// }

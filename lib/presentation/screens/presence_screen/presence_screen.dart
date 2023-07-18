@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap/data/data.dart';
 import 'package:stucap/presentation/presentation.dart';
 
 import '../../../config/app_theme.dart';
@@ -48,7 +50,11 @@ class PresenceScreen extends StatelessWidget {
                     Navigator.pushNamed(context, PresenceDetailsScreen.routeName);
                   },
                     cardTitle: 'Lo', isOnBlackBackground: false),
-                CustomCard(cardTitle: 'L1', isOnBlackBackground: false),
+                CustomCard(
+                  onTap: (){
+                    StudentsRepository().addStudent();
+                  },
+                    cardTitle: 'L1', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'L2', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'L3', isOnBlackBackground: false),
                 CustomCard(cardTitle: 'M1', isOnBlackBackground: false),

@@ -25,12 +25,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is Loaded){
-          snackBarMessenger(context: context, content: DataValues.welcomeText);
+          snackBarMessenger(context: context, content: DataValues.welcomeText, color: AppThemeData.primaryColor);
           Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
-          print('111111111111111111111111111111111111111111111111111111111111111');
-        } if (state is Error){
-          print('wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww ${state.toString()}');
-          errorDialog(context, content: CustomError(message: state.toString()));
+        } else if (state is Error){
+          errorDialog(context, content: CustomError(message: state.message.toString()));
         }
       },
       child: Scaffold(
@@ -67,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 45,
                 ),
                 TextFormField(
+                  keyboardType: TextInputType.emailAddress,
                   controller: _email,
                   decoration: loginTextFieldsDecoration(
                       hintText: DataValues.emailHintAndLabel,
@@ -76,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 30,
                 ),
                 TextFormField(
+                  obscureText: true,
                   controller: _password,
                   decoration: loginTextFieldsDecoration(
                       hintText: DataValues.passwordHintAndLabel,
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
   builder: (context, state) {
     return ElevatedButton(
                       onPressed: state is Loading ? (){} : () {
-                         context.read<LoginCubit>().login(email: _email.text.trim(), password: _password.text.trim());;
+                         context.read<LoginCubit>().login(email: _email.text.trim(), password: _password.text.trim());
                       },
                       child: Text(
                         state is Loading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,

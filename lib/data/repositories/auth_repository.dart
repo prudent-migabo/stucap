@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:stucap/data/data.dart';
+import 'package:stucap/utils/auth_exception_handler.dart';
 
 class AuthRepository{
   FirebaseAuth? auth = FirebaseAuth.instance;
@@ -13,8 +14,7 @@ class AuthRepository{
           email: email, password: password);
       return response;
     } on FirebaseAuthException catch(e){
-      // throw CustomError(message: e.message.toString());
-      print("00000000000000000000000000000000000000000000000000000000000000000 ${e.message.toString()}");
+       throw CustomError(message: AuthExceptionHandler.generateExceptionMessage(e.code));
     }
     catch(e){
       throw CustomError(message: e.toString());
@@ -26,7 +26,7 @@ class AuthRepository{
       var response = await auth!.signOut();
       return response;
     } on FirebaseAuthException catch(e){
-      throw CustomError(message: e.message.toString());
+      throw CustomError(message: AuthExceptionHandler.generateExceptionMessage(e.code));
     }
     catch(e){
       throw CustomError(message: e.toString());

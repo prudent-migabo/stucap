@@ -3,7 +3,7 @@ class DataValues {
   static const String appTitle = 'STUCAP';
 
   // TEXTS
-  static const String waitingText = "Patientez";
+  static const String waitingText = "Patientez...";
   static const String welcomeText = "Bienvenue";
 
   // SPLASH

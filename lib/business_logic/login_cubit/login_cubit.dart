@@ -13,12 +13,11 @@ class LoginCubit extends Cubit<LoginState> {
   Future login({required String email, required String password}) async{
     try{
       emit(Loading());
-      _repository.login(email: email, password: password);
+      await _repository.login(email: email, password: password);
       emit(Loaded());
-    } on CustomError{
+    } on CustomError catch (e){
+      emit(Error(message: e));
       rethrow;
-    } catch (e){
-      throw CustomError(message: e.toString());
     }
   }
 }

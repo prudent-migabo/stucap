@@ -11,12 +11,11 @@ class LogoutCubit extends Cubit<LogoutState> {
   Future logout() async{
     try{
       emit(Loading());
-      _repository.logout();
+     await _repository.logout();
       emit(Loaded());
-    } on CustomError{
+    } on CustomError catch (e){
+      emit(Error(message: e));
       rethrow;
-    } catch (e){
-      throw CustomError(message: e.toString());
     }
   }
 
