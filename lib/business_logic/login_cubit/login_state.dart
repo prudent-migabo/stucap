@@ -2,16 +2,16 @@ import 'package:stucap/data/data.dart';
 
 abstract class LoginState {}
 
-class Initial extends LoginState {}
+class LoginInitial extends LoginState {}
 
-class Loading extends LoginState {}
+class LoginLoading extends LoginState {}
 
-class Loaded extends LoginState {}
+class LoginLoaded extends LoginState {}
 
-class Error extends LoginState {
+class LoginError extends LoginState {
   CustomError message;
 
-  Error({
+  LoginError({
     required this.message,
   });
 }

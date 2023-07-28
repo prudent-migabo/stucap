@@ -6,17 +6,17 @@ import 'login_state.dart';
 
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(Initial());
+  LoginCubit() : super(LoginInitial());
 
   final AuthRepository _repository = AuthRepository();
 
   Future login({required String email, required String password}) async{
     try{
-      emit(Loading());
+      emit(LoginLoading());
       await _repository.login(email: email, password: password);
-      emit(Loaded());
+      emit(LoginLoaded());
     } on CustomError catch (e){
-      emit(Error(message: e));
+      emit(LoginError(message: e));
       rethrow;
     }
   }

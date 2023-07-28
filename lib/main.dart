@@ -26,13 +26,15 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => LogoutCubit()),
+        BlocProvider(create: (context) => PromotionCubit()),
+        BlocProvider(create: (context) => UpdatePresenceCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'STUCAP',
         theme: AppThemeData.lightTheme,
         onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-        initialRoute: SplashScreen.routeName,
+        initialRoute: PresenceDetailsScreen.routeName,
       ),
     );
   }

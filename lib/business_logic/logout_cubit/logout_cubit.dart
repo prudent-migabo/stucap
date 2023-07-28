@@ -4,17 +4,17 @@ import 'logout_state.dart';
 
 
 class LogoutCubit extends Cubit<LogoutState> {
-  LogoutCubit() : super(Initial());
+  LogoutCubit() : super(LogoutInitial());
 
   final AuthRepository _repository = AuthRepository();
 
   Future logout() async{
     try{
-      emit(Loading());
+      emit(LogoutLoading());
      await _repository.logout();
-      emit(Loaded());
+      emit(LogoutLoaded());
     } on CustomError catch (e){
-      emit(Error(message: e));
+      emit(LogoutError(message: e));
       rethrow;
     }
   }

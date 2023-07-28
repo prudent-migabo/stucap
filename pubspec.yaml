@@ -19,6 +19,8 @@ dependencies:
   cloud_firestore:
   bloc:
   flutter_bloc:
+  flutter_barcode_scanner:
+  barcode_widget:
 
 dev_dependencies:
   flutter_test:

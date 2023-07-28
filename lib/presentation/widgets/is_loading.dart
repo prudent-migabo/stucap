@@ -7,6 +7,7 @@ class IsLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: AppThemeData.backgroundWhite,
       body: Center(
         child: CircularProgressIndicator(
           color: AppThemeData.primaryColor,

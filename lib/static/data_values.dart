@@ -24,7 +24,8 @@ class DataValues {
   static const String homeCardTitle2 = 'VERIFICATION';
 
   //PRESENCE
-  static const String presenceTitle = 'CHOISISSEZ UNE PROPOTION';
+  static const String presenceTitle = 'Présence';
+  static const String presenceTitleDescription = "Veuillez choisir une promotion svp";
 
   // PRESENCE SCANNER TAB
   static const String presencesScannerButtonTitle = 'Scannez le code QR';

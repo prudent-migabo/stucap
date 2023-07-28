@@ -8,10 +8,8 @@ class AppThemeData {
   // Colors: Text
   static const textPrimary = primaryColor;
   static const textWhite = Color.fromRGBO(255, 255, 255, 1.0);
-  static const textBlack = Color.fromRGBO(25, 25, 25, 1.0);
-  static const textGreyDark = Color.fromRGBO(147, 147, 147, 1.0);
-  static const textGreyLight = Color.fromRGBO(205, 205, 205, 1.0);
-  static const textCursor = Color.fromRGBO(61, 61, 61, 1.0);
+  static const textBlack = Color(0xff212121);
+  static const textGrey = Color(0xff757575);
   static const textGreen = Color.fromRGBO(46, 125, 50, 1.0);
   static const errorTextColor = Color.fromRGBO(183, 28, 28, 1.0);
 
@@ -24,10 +22,10 @@ class AppThemeData {
   // Colors: Background and Cards
   static const backgroundBlack = Color.fromRGBO(18, 18, 18, 1.0);
   static const backgroundWhite = Color.fromRGBO(255, 255, 255, 1.0);
-  static const backgroundGrey = Color.fromRGBO(25, 25, 25, 1.0);
-  static const backgroundRed = Color.fromRGBO(183, 28, 28, 1.0);
+  static const backgroundGrey = Color(0xffBDBDBD);
+  static const backgroundRed = Color(0xffB71C1C);
   static const backgroundGreen = Color.fromRGBO(46, 125, 50, 1.0);
-  static const cardGrey = Color.fromRGBO(15, 15, 15, 1.0);
+  static const cardGrey = Color(0xffEEEEEE);
   static const cardBlue = Color.fromRGBO(21, 101, 192, 1.0);
   static const tooltip = Color.fromRGBO(33, 33, 33, 1.0);
 
@@ -38,6 +36,7 @@ class AppThemeData {
   // Radius
   static const double cornerRadiusCard = 40.0;
   static const double cornerRadiusCardButton = 30.0;
+  static const double cornerRadiusTextFields = 10.0;
 
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
@@ -47,63 +46,62 @@ class AppThemeData {
     fontFamily: 'Poppins',
     iconTheme: const IconThemeData(color: iconPrimary),
     textTheme: const TextTheme(
-      displayLarge: TextStyle(
-        fontSize: 60.0,
-        fontWeight: FontWeight.w800,
-        color: textBlack,
-      ),
       displayMedium: TextStyle(
-        fontSize: 54.0,
+        fontSize: 45,
         fontWeight: FontWeight.w700,
-        color: textBlack,
       ),
       displaySmall: TextStyle(
-          fontSize: 42.0,
-          fontWeight: FontWeight.w700,
-          color: AppThemeData.textBlack),
-      headlineSmall: TextStyle(
-          fontSize: 28.0,
-          fontWeight: FontWeight.w700,
-          color: AppThemeData.textBlack),
+        fontSize: 36,
+        fontWeight: FontWeight.w700,
+      ),
       titleLarge: TextStyle(
-          fontSize: 20.0,
+          fontSize: 22.0,
           fontWeight: FontWeight.w600,
           color: AppThemeData.textBlack),
       titleMedium: TextStyle(
-          fontSize: 18.0,
+          fontSize: 16.0,
           fontWeight: FontWeight.w500,
           color: AppThemeData.textBlack),
       titleSmall: TextStyle(
-          fontSize: 16.0,
+          fontSize: 14.0,
           fontWeight: FontWeight.w400,
-          color: AppThemeData.textBlack),
+          color: AppThemeData.textWhite),
       labelLarge: TextStyle(
           fontSize: 14.0,
           fontWeight: FontWeight.w400,
           color: AppThemeData.textBlack),
-      labelMedium: TextStyle(
-          fontSize: 12.0,
-          fontWeight: FontWeight.w300,
-          color: AppThemeData.textGreyDark),
     ),
     colorScheme: const ColorScheme.light().copyWith(background: backgroundWhite),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: primaryColor,
-      selectionColor: textCursor,
-      selectionHandleColor: textPrimary,
-    ),
     inputDecorationTheme:  InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(cornerRadiusTextFields),
+        borderSide: const BorderSide(color: backgroundGrey),
+      ),
       enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: const BorderSide(color: primaryColor)
+        borderRadius: BorderRadius.circular(cornerRadiusTextFields),
+        borderSide: const BorderSide(color: backgroundGrey),
       ),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
-          borderSide: const BorderSide(color: primaryColor, width: 2)
+          borderRadius: BorderRadius.circular(cornerRadiusTextFields),
+          borderSide: const BorderSide(color: backgroundGrey, width: 2)
+      ),
+      hintStyle: const TextStyle(
+        fontSize: 14,
+        color: textGrey,
+      ),
+      labelStyle: const TextStyle(
+        fontSize: 14,
+        color: textGrey,
       ),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: primaryColor,
+      titleTextStyle: TextStyle(
+        fontFamily: 'Poppins',
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
     ),
     elevatedButtonTheme: const ElevatedButtonThemeData(
       style: ButtonStyle(

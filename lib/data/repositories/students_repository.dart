@@ -11,9 +11,17 @@ class StudentsRepository {
       'lastName': 'Musavuli',
       'promotion': "L0",
       'presenceStatus': true,
-      'academicFees': 100,
+      'academicFees': "100",
       'inscriptionStatus': true,
     });
+  }
+
+  Future updatePresenceStatus (String uid) async{
+    // try{
+      await studentRef.doc(uid).update({'presenceStatus': true});
+    // } catch(e){
+    //   throw CustomError(message: e.toString());
+    // }
   }
   
   // Registered Students
@@ -21,8 +29,8 @@ class StudentsRepository {
      return studentRef.doc(uid).snapshots().map((event) => StudentModel.fromMap(event));
   }
 
-  List<StudentModel> listStudent (QuerySnapshot querySnapshot){
-    return querySnapshot.docs.map((e) => StudentModel.fromMap(e)).toList();
+  List<StudentModel> listStudent (QuerySnapshot? querySnapshot){
+    return querySnapshot!.docs.map((e) => StudentModel.fromMap(e)).toList();
   }
 
   Stream<List<StudentModel>> listRegisteredStudents (String promotion){
@@ -31,9 +39,9 @@ class StudentsRepository {
 
 
   // Present students
-  Stream<List<StudentModel>> listPresentStudents (){
-    // print('11111111111111111111111111111111111111111111111111111111111111111111111111111111111${studentRef.doc().snapshots().length}');
-    return studentRef.snapshots().map(listStudent);
+  Stream<List<StudentModel>> listPresentStudents (String promotion){
+     // print('11111111111111111111111111111111111111111111111111111111111111111111111111111111111${studentRef.snapshots().map(listStudent).length}');
+    return studentRef.where("promotion", isEqualTo: promotion).where("presenceStatus", isEqualTo: true).snapshots().map(listStudent);
   }
   
 }

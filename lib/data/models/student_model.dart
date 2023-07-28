@@ -5,7 +5,7 @@ class StudentModel{
   String lastName;
   String promotion;
   bool presenceStatus;
-  double academicFees;
+  String academicFees;
   bool inscriptionStatus;
   String? uid;
 
@@ -39,9 +39,9 @@ class StudentModel{
       lastName: data['lastName'] ?? '',
       promotion: data['promotion'] ?? '',
       presenceStatus: data['presenceStatus'] ?? false,
-      academicFees: data['academicFees'] ?? 0.0,
+      academicFees: data['academicFees'] ?? '',
       inscriptionStatus: data['inscriptionStatus'] ?? false,
-      uid: data['uid'] ?? '',
+      uid: map.id,
     );
   }
 

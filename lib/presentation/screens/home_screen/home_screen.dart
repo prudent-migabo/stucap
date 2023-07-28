@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 60,
+                    height: 40,
                   ),
                   CustomCard(
                     cardTitle: DataValues.homeCardTitle1,

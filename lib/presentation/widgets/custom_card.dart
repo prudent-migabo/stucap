@@ -13,7 +13,7 @@ class CustomCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: isOnBlackBackground ? 110 : 180,
+        height: isOnBlackBackground ? 80 : 100,
         width: double.infinity,
         child: Card(
           elevation: 2,
@@ -26,11 +26,8 @@ class CustomCard extends StatelessWidget {
               cardTitle,
               style: TextStyle(
                 color: AppThemeData.textWhite,
-                fontSize: isOnBlackBackground ? AppThemeData
-                    .lightTheme.textTheme.titleMedium!.fontSize : AppThemeData
-                    .lightTheme.textTheme.titleLarge!.fontSize,
                 fontWeight: AppThemeData
-                    .lightTheme.textTheme.headlineSmall!.fontWeight,
+                    .lightTheme.textTheme.titleMedium!.fontWeight,
               ),
             ),
           ),

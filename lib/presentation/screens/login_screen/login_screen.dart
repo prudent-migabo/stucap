@@ -6,6 +6,7 @@ import 'package:stucap/data/data.dart';
 import 'package:stucap/presentation/presentation.dart';
 import 'package:stucap/utils/utils.dart';
 
+import '../../../static/constants.dart';
 import '../../../static/data_values.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -24,17 +25,17 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is Loaded){
+        if (state is LoginLoaded){
           snackBarMessenger(context: context, content: DataValues.welcomeText, color: AppThemeData.primaryColor);
           Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
-        } else if (state is Error){
+        } else if (state is LoginError){
           errorDialog(context, content: CustomError(message: state.message.toString()));
         }
       },
       child: Scaffold(
         body: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal:25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -44,59 +45,57 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: AppThemeData.primaryColor,
                     fontSize:
                     AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
-                    fontWeight: AppThemeData
-                        .lightTheme.textTheme.displaySmall!.fontWeight,
+                    fontWeight:
+                    AppThemeData
+                        .lightTheme.textTheme.titleLarge!.fontWeight,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+
                 Text(
                   DataValues.loginDescription,
                   style: TextStyle(
                     color: AppThemeData.primaryColor,
                     fontSize:
-                    AppThemeData.lightTheme.textTheme.titleLarge!.fontSize,
-                    fontWeight: AppThemeData
-                        .lightTheme.textTheme.displaySmall!.fontWeight,
+                    AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                    fontWeight: bold,
                   ),
                 ),
                 const SizedBox(
-                  height: 45,
+                  height: 40,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   controller: _email,
-                  decoration: loginTextFieldsDecoration(
-                      hintText: DataValues.emailHintAndLabel,
-                      labelText: DataValues.emailHintAndLabel),
+                  decoration: const InputDecoration(
+                    hintText: DataValues.emailHintAndLabel,
+                    labelText: DataValues.emailHintAndLabel,
+                  ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 TextFormField(
                   obscureText: true,
                   controller: _password,
-                  decoration: loginTextFieldsDecoration(
-                      hintText: DataValues.passwordHintAndLabel,
-                      labelText: DataValues.passwordHintAndLabel),
+                  decoration: const InputDecoration(
+                    hintText: DataValues.passwordHintAndLabel,
+                    labelText: DataValues.passwordHintAndLabel,
+                  ),
                 ),
                 const SizedBox(
                   height: 40,
                 ),
                 SizedBox(
-                    height: 60,
+                    height: 50,
                     child: BlocBuilder<LoginCubit, LoginState>(
   builder: (context, state) {
     return ElevatedButton(
-                      onPressed: state is Loading ? (){} : () {
+                      onPressed: state is LoginLoading ? (){} : () {
                          context.read<LoginCubit>().login(email: _email.text.trim(), password: _password.text.trim());
                       },
                       child: Text(
-                        state is Loading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,
+                        state is LoginLoading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,
                         style: TextStyle(
-                          fontSize: AppThemeData
-                              .lightTheme.textTheme.titleMedium!.fontSize,
                           fontWeight: AppThemeData
                               .lightTheme.textTheme.titleMedium!.fontWeight,
                         ),

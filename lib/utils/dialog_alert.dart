@@ -20,6 +20,7 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
   }
 
   AlertDialog alert = AlertDialog(
+    insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     title: Text(
       title,
       style: const TextStyle(

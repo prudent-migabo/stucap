@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:stucap/presentation/presentation.dart';
+import 'package:stucap/static/data_values.dart';
+
+import '../../../config/app_theme.dart';
+import '../generate_code.dart';
 
 class PresenceDetailsScreen extends StatefulWidget {
   static const String routeName = '/PresenceDetailsScreen';
-  const PresenceDetailsScreen({Key? key}) : super(key: key);
-
+   const PresenceDetailsScreen({Key? key}) : super(key: key);
 
   @override
   State<PresenceDetailsScreen> createState() => _PresenceDetailsScreenState();
@@ -12,54 +15,40 @@ class PresenceDetailsScreen extends StatefulWidget {
 
 class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
 
-  int _selectedIndex = 0;
-  List<Widget> _pages = [
-    PresenceScannerTab(),
+  final List<Widget> _pages = [
+    const PresenceScannerTab(),
     DailyListStudentTab(),
+    GenerateCode(),
   ];
 
+  int _index = 0;
   @override
   Widget build(BuildContext context) {
-    final primary = Theme.of(context).primaryColor;
     return Scaffold(
-      bottomNavigationBar: SizedBox(
-        height: 60,
-        child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          elevation: 7,
-          unselectedIconTheme: IconThemeData(
-            color: Colors.grey,
-          ),
-          unselectedItemColor: Colors.grey,
-          unselectedLabelStyle: TextStyle(color: Colors.black),
-          showUnselectedLabels: true,
-          showSelectedLabels: true,
-          iconSize: 30,
-          selectedIconTheme: IconThemeData(color: primary),
-          selectedItemColor: primary,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.qr_code_scanner, size: 25),
-              label: 'Scanner',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.people, size: 25),
-              label: 'Liste',
-            ),
-          ],
+      body: _pages[_index],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Theme.of(context).primaryColor,
+        onTap: (selectedIndex) {
+          setState(() {
+            _index = selectedIndex;
+          });
+        },
+        currentIndex: _index,
+        selectedLabelStyle: TextStyle(
+          fontSize: AppThemeData.lightTheme.textTheme.titleSmall!.fontSize,
         ),
-      ),
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _pages,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.qr_code_scanner), label: 'Scanner',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list), label: 'Liste'
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.generating_tokens), label: 'Generer code'
+          ),
+        ],
       ),
     );
-  }
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 }
