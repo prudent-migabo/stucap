@@ -10,10 +10,11 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
   Widget okButton() {
     return TextButton(
         onPressed: onPressed,
-        child: const Text(
+        child:  Text(
           'OK',
           style: TextStyle(
               color: AppThemeData.textGreen,
+            fontSize: AppThemeData.lightTheme.textTheme.titleSmall!.fontSize,
             fontWeight: FontWeight.bold,
           ),
         ));
@@ -23,8 +24,9 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
     insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     title: Text(
       title,
-      style: const TextStyle(
+      style:  TextStyle(
         color: AppThemeData.textGreen,
+        fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -35,7 +37,7 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
   );
 
   showDialog(
-      barrierDismissible: true, context: context, builder: (context) => alert);
+      barrierDismissible: false, context: context, builder: (context) => alert);
 }
 
 //// Method that throws the response alert dialog for scan event

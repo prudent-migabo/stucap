@@ -39,8 +39,7 @@ class PresenceScreen extends StatelessWidget {
               children: [
                 CustomCard(
                     onTap: () {
-                      context.read<PromotionCubit>().addPromotion("L0");
-
+                      context.read<PromotionCubit>().addPromotion(1);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
@@ -49,16 +48,40 @@ class PresenceScreen extends StatelessWidget {
                 ),
                 CustomCard(
                     onTap: () {
-                      context.read<PromotionCubit>().addPromotion("L1");
+                      context.read<PromotionCubit>().addPromotion(2);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
                     cardTitle: 'L1',
                     isOnBlackBackground: false),
-                CustomCard(cardTitle: 'L2', isOnBlackBackground: false),
-                CustomCard(cardTitle: 'L3', isOnBlackBackground: false),
-                CustomCard(cardTitle: 'M1', isOnBlackBackground: false),
-                CustomCard(cardTitle: 'M2', isOnBlackBackground: false),
+                CustomCard(
+                    onTap: () {
+                      context.read<PromotionCubit>().addPromotion(3);
+                      Navigator.pushNamed(
+                          context, PresenceDetailsScreen.routeName);
+                    },
+                    cardTitle: 'L2', isOnBlackBackground: false),
+                CustomCard(
+                    onTap: () {
+                      context.read<PromotionCubit>().addPromotion(4);
+                      Navigator.pushNamed(
+                          context, PresenceDetailsScreen.routeName);
+                    },
+                    cardTitle: 'L3', isOnBlackBackground: false),
+                CustomCard(
+                    onTap: () {
+                      context.read<PromotionCubit>().addPromotion(5);
+                      Navigator.pushNamed(
+                          context, PresenceDetailsScreen.routeName);
+                    },
+                    cardTitle: 'M1', isOnBlackBackground: false),
+                CustomCard(
+                    onTap: () {
+                      context.read<PromotionCubit>().addPromotion(6);
+                      Navigator.pushNamed(
+                          context, PresenceDetailsScreen.routeName);
+                    },
+                    cardTitle: 'M2', isOnBlackBackground: false),
               ],
             )
           ],

@@ -7,7 +7,9 @@ import '../generate_code.dart';
 
 class PresenceDetailsScreen extends StatefulWidget {
   static const String routeName = '/PresenceDetailsScreen';
-   const PresenceDetailsScreen({Key? key}) : super(key: key);
+    PresenceDetailsScreen({Key? key, this.pageTitle}) : super(key: key);
+
+   String? pageTitle;
 
   @override
   State<PresenceDetailsScreen> createState() => _PresenceDetailsScreenState();
@@ -15,8 +17,9 @@ class PresenceDetailsScreen extends StatefulWidget {
 
 class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
 
+
   final List<Widget> _pages = [
-    const PresenceScannerTab(),
+    PresenceScannerTab(),
     DailyListStudentTab(),
     GenerateCode(),
   ];

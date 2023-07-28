@@ -16,7 +16,7 @@ class RouteGenerator {
       case PresenceScreen.routeName :
         return MaterialPageRoute(builder: (context) => const PresenceScreen());
       case PresenceDetailsScreen.routeName :
-        return MaterialPageRoute(builder: (context) => const PresenceDetailsScreen());
+        return MaterialPageRoute(builder: (context) => PresenceDetailsScreen());
       case ListStudentsScreen.routeName :
         return MaterialPageRoute(builder: (context) => ListStudentsScreen());
       default:
