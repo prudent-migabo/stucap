@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stucap/business_logic/business_logic.dart';
 import 'package:stucap/data/data.dart';
 import 'package:stucap/presentation/presentation.dart';
+import 'package:stucap/static/constants.dart';
 import 'package:stucap/utils/utils.dart';
 
 import '../../../config/app_theme.dart';
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       scanResult = 'Erreur de scannage';
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,21 +50,24 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Container(color: AppThemeData.backgroundBlack.withOpacity(0.7)),
           Positioned(
-            top: 37, left: 17,
-              child: Builder(
-                builder: (context) {
-                  return InkWell(
-                    onTap: (){
+              top: 37,
+              left: 17,
+              child: Builder(builder: (context) {
+                return InkWell(
+                    onTap: () {
                       Scaffold.of(context).openDrawer();
                     },
-                      child: const Icon(Icons.menu, color: AppThemeData.backgroundWhite, size: 30,));
-                }
-              )),
+                    child: const Icon(
+                      Icons.menu,
+                      color: AppThemeData.backgroundWhite,
+                      size: 30,
+                    ));
+              })),
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     DataValues.homeTitle,
@@ -74,7 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           .lightTheme.textTheme.titleLarge!.fontWeight,
                     ),
                   ),
-                  const SizedBox(height: 5,),
+                  const SizedBox(
+                    height: 5,
+                  ),
                   Text(
                     DataValues.homeDescription,
                     style: TextStyle(
@@ -91,35 +98,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   CustomCard(
                     cardTitle: DataValues.homeCardTitle1,
                     isOnBlackBackground: true,
-                    onTap: (){
+                    onTap: () {
                       Navigator.pushNamed(context, PresenceScreen.routeName);
                     },
                   ),
-                  const SizedBox(height: 20,),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   CustomCard(
                     onTap: () {
                       scanQrCode(context).whenComplete(() {
                         scanVerificationPopup(context,
                             content: StreamBuilder<StudentModel>(
-                                stream: StudentsRepository().studentModel(scanResultFinal),
+                                stream: StudentsRepository()
+                                    .studentModel(scanResultFinal),
                                 builder: (context, snapshot) {
                                   StudentModel? studentModel = snapshot.data;
-                                  if (!snapshot.hasData || studentModel == null) {
+                                  if (!snapshot.hasData ||
+                                      studentModel == null) {
                                     return const Center(
                                       child: CircularProgressIndicator(),
                                     );
                                   }
-                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
                                     return const Center(
                                       child: CircularProgressIndicator(),
                                     );
                                   } else if (snapshot.hasError) {
                                     errorDialog(context,
-                                        content:
-                                        CustomError(message: snapshot.error.toString()));
+                                        content: CustomError(
+                                            message:
+                                                snapshot.error.toString()));
                                   }
                                   return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       customRowPopupInfo(
@@ -135,20 +149,51 @@ class _HomeScreenState extends State<HomeScreen> {
                                         height: 10,
                                       ),
                                       customRowPopupInfo(
-                                          title: DataValues.academicFeesPaidTitle,
-                                          description: studentModel.academicFees),
+                                          title:
+                                              DataValues.academicFeesPaidTitle,
+                                          description:
+                                              studentModel.academicFees),
                                       const SizedBox(
                                         height: 10,
                                       ),
                                       customRowPopupInfo(
-                                          title: DataValues.academicFeesPaidDescription,
-                                          description: DataValues.academicFeesDescription),
+                                          title: DataValues
+                                              .academicFeesPaidDescription,
+                                          description: DataValues
+                                              .academicFeesDescription),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      double.parse(studentModel.academicFees) <
+                                              300
+                                          ? Text(
+                                              DataValues
+                                                  .negativeVerificationMessage,
+                                              style: TextStyle(
+                                                fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                                                  fontWeight: bold,
+                                                  color: AppThemeData
+                                                      .errorTextColor),
+                                            )
+                                          : Text(
+                                              DataValues
+                                                  .positiveVerificationMessage,
+                                              style: TextStyle(
+                                                fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                                                  fontWeight: bold,
+                                                  color:
+                                                      AppThemeData.textGreen),
+                                            ),
+                                      const SizedBox(height: 10),
+                                      Align(
+                                        alignment: Alignment.center,
+                                          child: customCheckCard(isTrue: double.parse(studentModel.academicFees) < 300 ? false : true)),
                                     ],
                                   );
                                 }),
-                            title: 'Présence', onPressed: () {
-                              Navigator.pop(context);
-                            }, hasPaid: false);
+                            title: 'Vérification', onPressed: () {
+                          Navigator.pop(context);
+                        }, hasPaid: true);
                       });
                     },
                     cardTitle: DataValues.homeCardTitle2,

@@ -40,6 +40,8 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
       barrierDismissible: false, context: context, builder: (context) => alert);
 }
 
+
+
 //// Method that throws the response alert dialog for scan event
 void scanVerificationPopup(BuildContext context, {required Widget? content, required String title, VoidCallback? onPressed, Color? titleColor, Color? actionBtnColor, required bool hasPaid,}) {
   Widget okButton() {
@@ -48,7 +50,7 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
         child: Text(
           'OK',
           style: TextStyle(
-            color: hasPaid ? AppThemeData.textGreen : AppThemeData.errorTextColor,
+            color: AppThemeData.textBlack,
             fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
             fontWeight: FontWeight.bold,
           ),
@@ -59,8 +61,8 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
     insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
     title: Text(
       title,
-      style:  TextStyle(
-        color: hasPaid ? AppThemeData.textGreen : AppThemeData.errorTextColor,
+      style: TextStyle(
+        color: AppThemeData.textBlack,
         fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
         fontWeight: FontWeight.bold,
       ),
@@ -74,6 +76,8 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
   showDialog(
       barrierDismissible: true, context: context, builder: (context) => alert);
 }
+
+
 
 
 /// Method that throws an error dialog box for the entire app

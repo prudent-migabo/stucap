@@ -45,7 +45,8 @@ class DataValues {
   // VERIFICATION SCAN POPUP
   static const String academicFeesPaidTitle = "FA payé:";
   static const String academicFeesPaidDescription = "FA restant:";
-  static const String confirmationVerificationMessage = "N'est pas en ordre.";
+  static const String negativeVerificationMessage = "N'est pas en ordre.";
+  static const String positiveVerificationMessage = "Est en ordre.";
 
   // NAVIGATION DRAWER
   static const String drawerTitle1 = "Etudiants";

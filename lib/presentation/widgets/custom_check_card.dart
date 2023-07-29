@@ -3,7 +3,7 @@ import 'package:stucap/config/app_theme.dart';
 
 Widget customCheckCard({required bool isTrue}){
   return CircleAvatar(
-    radius: 30,
+    radius: 25,
     backgroundColor: isTrue ? AppThemeData.backgroundGreen: AppThemeData.backgroundRed,
      child: Icon(isTrue ? Icons.check : Icons.close, color: AppThemeData.backgroundWhite,),
   );
