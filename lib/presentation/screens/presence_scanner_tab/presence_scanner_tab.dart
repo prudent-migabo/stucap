@@ -112,7 +112,9 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
       child: Scaffold(
         appBar: AppBar(
           leading: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios_new,
             ),
@@ -140,12 +142,13 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
             child: SizedBox(
               height: 50,
               child: ElevatedButton(
-                onPressed: () {
-                  scanQrCode(context).whenComplete(() {
-                    context
-                        .read<UpdatePresenceCubit>()
-                        .updatePresence(scanResultFinal);
-                  });
+                onPressed: () async{
+                  // scanQrCode(context).whenComplete(() {
+                  //   context
+                  //       .read<UpdatePresenceCubit>()
+                  //       .updatePresence(scanResultFinal);
+                  // });
+                  await StudentsRepository().addStudent();
                 },
                 child: Text(
                   DataValues.presencesScannerButtonTitle,
