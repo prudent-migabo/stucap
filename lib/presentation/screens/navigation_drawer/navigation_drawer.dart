@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap/business_logic/business_logic.dart';
 import 'package:stucap/presentation/presentation.dart';
 
 import '../../../config/app_theme.dart';
@@ -7,14 +9,13 @@ import '../../../static/data_values.dart';
 
 Widget navigationDrawer (BuildContext context){
   return Container(
-     width: 300,
+     width: MediaQuery.of(context).size.width * 0.8,
     color: Colors.white,
     child: ListView(
-      // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           padding: const EdgeInsets.all(20),
-          height: 180,
+          height: 170,
           width: double.infinity,
           color: AppThemeData.primaryColor,
           child: Column(
@@ -47,26 +48,44 @@ Widget navigationDrawer (BuildContext context){
               customDrawerListTile(
                 title: DataValues.drawerDescription1,
                 onPressed: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context)=> ListStudentsScreen(
-                    title: 'LO',
-                  ),),);
-
+                  context.read<PromotionCubit>().addPromotion(1);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription2,
+                onPressed: (){
+                  context.read<PromotionCubit>().addPromotion(2);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
+                }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription3,
+                onPressed: (){
+                  context.read<PromotionCubit>().addPromotion(3);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
+                }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription4,
+                onPressed: (){
+                  context.read<PromotionCubit>().addPromotion(4);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
+                }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription5,
+                onPressed: (){
+                  context.read<PromotionCubit>().addPromotion(5);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
+                }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription6,
+                onPressed: (){
+                  context.read<PromotionCubit>().addPromotion(6);
+                  Navigator.pushNamed(context, ListStudentsScreen.routeName);
+                }
               ),
               const SizedBox(height: 15,),
               Text(DataValues.drawerTitle2,

@@ -16,26 +16,20 @@ class PresenceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(onBackEvent: (){}, title: DataValues.presenceTitle),
-      drawer: navigationDrawer(context),
+      appBar: customAppBar(onBackEvent: (){
+        Navigator.pop(context);
+      }, title: DataValues.presenceTitle),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 20,),
-            Text(DataValues.presenceTitleDescription,
-                style: TextStyle(
-                  fontWeight: bold,
-                )),
-            const SizedBox(
-              height: 40,
-            ),
             GridView.count(
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               crossAxisCount: 2,
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 CustomCard(
                     onTap: () {

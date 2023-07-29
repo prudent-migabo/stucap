@@ -143,12 +143,11 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
               height: 50,
               child: ElevatedButton(
                 onPressed: () async{
-                  // scanQrCode(context).whenComplete(() {
-                  //   context
-                  //       .read<UpdatePresenceCubit>()
-                  //       .updatePresence(scanResultFinal);
-                  // });
-                  await StudentsRepository().addStudent();
+                  scanQrCode(context).whenComplete(() {
+                    context
+                        .read<UpdatePresenceCubit>()
+                        .updatePresence(scanResultFinal);
+                  });
                 },
                 child: Text(
                   DataValues.presencesScannerButtonTitle,

@@ -41,21 +41,30 @@ void scanPresencePopup(BuildContext context, {required Widget? content, required
 }
 
 //// Method that throws the response alert dialog for scan event
-void scanVerificationPopup(BuildContext context, {required Widget? content, required Widget title, VoidCallback? onPressed, Color? titleColor, Color? actionBtnColor}) {
+void scanVerificationPopup(BuildContext context, {required Widget? content, required String title, VoidCallback? onPressed, Color? titleColor, Color? actionBtnColor, required bool hasPaid,}) {
   Widget okButton() {
     return TextButton(
         onPressed: onPressed,
-        child: const Text(
+        child: Text(
           'OK',
           style: TextStyle(
-            color: AppThemeData.textBlack,
+            color: hasPaid ? AppThemeData.textGreen : AppThemeData.errorTextColor,
+            fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
             fontWeight: FontWeight.bold,
           ),
         ));
   }
 
   AlertDialog alert = AlertDialog(
-    title: title,
+    insetPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+    title: Text(
+      title,
+      style:  TextStyle(
+        color: hasPaid ? AppThemeData.textGreen : AppThemeData.errorTextColor,
+        fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     content: content,
     actions: [
       okButton(),

@@ -32,30 +32,14 @@ class _DailyListStudentTabState extends State<DailyListStudentTab> {
             Icons.arrow_back_ios_new,
           ),
         ),
-        title: Text(
-          state.index == 1
-          ? "L0 : Présence d'aujourd'hui"
-          : state.index == 2
-          ? "L1 : Présence d'aujourd'hui"
-          : state.index == 3
-          ? "L2  : Présence d'aujourd'hui"
-          : state.index == 4
-          ? "L3 : Présence d'aujourd'hui"
-          : state.index == 5
-          ? "M1 : Présence d'aujourd'hui"
-          : state.index == 6
-          ? "M2 : Présence d'aujourd'hui"
-          : "L0 : Présence d'aujourd'hui",
-        ),
+        title: Text(MethodsHelper.sortAppbarTitle1(state)),
       ),
-      //title: "Lo : Présence d'aujourd'hui",
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20),
         child: StreamBuilder<List<StudentModel>>(
-            stream: _repository.listPresentStudents(sortIndex(state)),
+            stream: _repository.listPresentStudents(MethodsHelper.sortStreamTitle(state)),
             builder: (context, snapshot) {
-              print("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii ${sortIndex(state)}, $state");
               List<StudentModel>? listStudents = snapshot.data;
               if (!snapshot.hasData || listStudents!.isEmpty) {
                 return noDataBanner();

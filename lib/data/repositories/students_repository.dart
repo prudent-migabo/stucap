@@ -40,7 +40,6 @@ class StudentsRepository {
 
   // Present students
   Stream<List<StudentModel>> listPresentStudents (String promotion){
-     // print('11111111111111111111111111111111111111111111111111111111111111111111111111111111111${studentRef.snapshots().map(listStudent).length}');
     return studentRef.where("promotion", isEqualTo: promotion).where("presenceStatus", isEqualTo: true).snapshots().map(listStudent);
   }
   
