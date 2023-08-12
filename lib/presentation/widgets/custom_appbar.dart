@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-PreferredSize customAppBar ({required VoidCallback onBackEvent, required String title}){
+PreferredSize customAppBar ({required VoidCallback onBackEvent, required String title, List<Widget>? actions}){
   return PreferredSize(
       preferredSize: const Size.fromHeight(56),
       child: AppBar(
@@ -9,5 +9,6 @@ PreferredSize customAppBar ({required VoidCallback onBackEvent, required String 
       child: const Icon(Icons.arrow_back_ios_new,),
     ),
         title: Text(title),
+        actions: actions,
   ));
 }

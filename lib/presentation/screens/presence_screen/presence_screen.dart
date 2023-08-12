@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stucap/business_logic/business_logic.dart';
@@ -18,9 +20,21 @@ class PresenceScreen extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar(onBackEvent: (){
         Navigator.pop(context);
-      }, title: DataValues.presenceTitle),
+      }, title: DataValues.presenceTitle,
+        actions: [
+          GestureDetector(
+            onTap: (){
+              Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+            },
+            child: const Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Icon(Icons.home),
+        ),
+          ),
+    ],
+      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,51 +45,61 @@ class PresenceScreen extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                CustomCard(
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(1);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'L0',
-                    isOnBlackBackground: false
+                    title: 'L0',
+                  description1: '100',
+                  description2: '5',
                 ),
-                CustomCard(
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(2);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'L1',
-                    isOnBlackBackground: false),
-                CustomCard(
+                  title: 'L1',
+                  description1: '120', description2: '10',
+                ),
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(3);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'L2', isOnBlackBackground: false),
-                CustomCard(
+                  title: 'L2',
+                  description1: '70', description2: '20',
+                ),
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(4);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'L3', isOnBlackBackground: false),
-                CustomCard(
+                  title: 'L3',
+                  description1: '80', description2: '27',
+                ),
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(5);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'M1', isOnBlackBackground: false),
-                CustomCard(
+                  title: 'M1',
+                  description1: '50', description2: '10',
+                ),
+                CustomCardPresenceDash(
                     onTap: () {
                       context.read<PromotionCubit>().addPromotion(6);
                       Navigator.pushNamed(
                           context, PresenceDetailsScreen.routeName);
                     },
-                    cardTitle: 'M2', isOnBlackBackground: false),
+                  title: 'M2',
+                  description1: '20', description2: '7',
+                ),
               ],
             )
           ],
