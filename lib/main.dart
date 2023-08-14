@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         title: 'STUCAP',
         theme: AppThemeData.lightTheme,
         onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-        initialRoute: HomeScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }

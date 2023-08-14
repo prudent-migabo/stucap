@@ -21,6 +21,7 @@ dependencies:
   flutter_bloc:
   flutter_barcode_scanner:
   barcode_widget:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

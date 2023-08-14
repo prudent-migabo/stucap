@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginLoaded){
-          snackBarMessenger(context: context, content: DataValues.welcomeText, color: AppThemeData.primaryColor);
+          successToast(message: 'Bienvenue');
           Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
         } else if (state is LoginError){
           errorDialog(context, content: CustomError(message: state.message.toString()));
@@ -50,7 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         .lightTheme.textTheme.titleLarge!.fontWeight,
                   ),
                 ),
-
                 Text(
                   DataValues.loginDescription,
                   style: TextStyle(
@@ -72,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 TextFormField(
                   obscureText: true,
@@ -89,18 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 50,
                     child: BlocBuilder<LoginCubit, LoginState>(
   builder: (context, state) {
-    return ElevatedButton(
+    return
+      CustomButton(
                       onPressed: state is LoginLoading ? (){} : () {
                          context.read<LoginCubit>().login(email: _email.text.trim(), password: _password.text.trim());
                       },
-                      child: Text(
-                        state is LoginLoading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,
-                        style: TextStyle(
-                          fontWeight: AppThemeData
-                              .lightTheme.textTheme.titleMedium!.fontWeight,
-                        ),
-                      ),
-                    );
+                      text: state is LoginLoading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,
+                        );
   },
 )),
               ],

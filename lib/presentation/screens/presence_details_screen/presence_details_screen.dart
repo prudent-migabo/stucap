@@ -21,7 +21,7 @@ class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
   final List<Widget> _pages = [
     PresenceScannerTab(),
     DailyListStudentTab(),
-    GenerateCode(),
+    // GenerateCode(),
   ];
 
   int _index = 0;
@@ -47,9 +47,9 @@ class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.list), label: 'Liste'
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.generating_tokens), label: 'Generer code'
-          ),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.generating_tokens), label: 'Generer code'
+          // ),
         ],
       ),
     );

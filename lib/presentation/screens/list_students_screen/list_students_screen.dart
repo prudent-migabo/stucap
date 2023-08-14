@@ -54,6 +54,7 @@ class ListStudentsScreen extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(left: 70),
                         child: Divider(
+                          height: 1,
                           thickness: 0.3,
                           color: AppThemeData.backgroundGrey,
                         ),

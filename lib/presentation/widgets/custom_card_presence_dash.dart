@@ -16,7 +16,7 @@ class CustomCardPresenceDash extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        elevation: 4,
+        elevation: 5,
         color: AppThemeData.backgroundWhite,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -41,13 +41,11 @@ class CustomCardPresenceDash extends StatelessWidget {
                     title,
                     style: TextStyle(
                       color: AppThemeData.textBlack,
-                      fontSize: AppThemeData.lightTheme.textTheme.titleLarge!.fontSize,
+                      fontSize: 27,
                       fontWeight: bold,
-                      // AppThemeData
-                      //     .lightTheme.textTheme.titleLarge!.fontWeight,
                     ),
                   ),
-                  const SizedBox(height: 15,),
+                  const SizedBox(height: 10,),
                   Text("$description1 inscrits",
                     style: TextStyle(
                       color: AppThemeData.primaryColor,

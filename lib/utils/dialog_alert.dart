@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stucap/config/app_theme.dart';
 import 'package:stucap/static/constants.dart';
 
@@ -50,7 +51,7 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
         child: Text(
           'OK',
           style: TextStyle(
-            color: AppThemeData.textBlack,
+            color: AppThemeData.primaryColor,
             fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
             fontWeight: FontWeight.bold,
           ),
@@ -62,7 +63,7 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
     title: Text(
       title,
       style: TextStyle(
-        color: AppThemeData.textBlack,
+        color: AppThemeData.primaryColor,
         fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
         fontWeight: FontWeight.bold,
       ),
@@ -82,7 +83,6 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
 
 /// Method that throws an error dialog box for the entire app
 void errorDialog(BuildContext context, {required CustomError? content}) {
-  final errorColor = Theme.of(context).colorScheme.error;
   Widget okButton() {
     return TextButton(onPressed: () => Navigator.pop(context), child: Text(
       'OK',
@@ -112,4 +112,13 @@ void errorDialog(BuildContext context, {required CustomError? content}) {
 
   showDialog(
       barrierDismissible: false, context: context, builder: (context) => alert);
+}
+
+
+void successToast({required String message}) {
+  Fluttertoast.showToast(
+      msg: message,
+      backgroundColor: AppThemeData.backgroundGreen,
+      textColor: Colors.white,
+      gravity: ToastGravity.TOP);
 }

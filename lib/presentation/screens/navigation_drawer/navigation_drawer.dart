@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stucap/business_logic/business_logic.dart';
+import 'package:stucap/data/data.dart';
 import 'package:stucap/presentation/presentation.dart';
+import 'package:stucap/utils/dialog_alert.dart';
 
 import '../../../config/app_theme.dart';
 import '../../../static/constants.dart';
 import '../../../static/data_values.dart';
 
 Widget navigationDrawer (BuildContext context){
-  return Container(
+  return BlocListener<LogoutCubit, LogoutState>(
+  listener: (context, state) {
+    if (state is LogoutError){
+      errorDialog(context, content: CustomError(message: state.message.toString()));
+    } else if (state is LogoutLoaded){
+      successToast(message: 'Deconnecté avec succès');
+      Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
+    }
+  },
+  child: Container(
      width: MediaQuery.of(context).size.width * 0.8,
     color: Colors.white,
     child: ListView(
@@ -102,11 +113,25 @@ Widget navigationDrawer (BuildContext context){
                 leading: const Icon(Icons.dark_mode),
                 title: DataValues.settingsDescription2,
               ),
+
             ],
           ),
         ),
-
+        BlocBuilder<LogoutCubit, LogoutState>(
+  builder: (context, state) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 10),
+      child: CustomButton(
+        backgroundColor: AppThemeData.backgroundRed,
+        onPressed: state is LogoutLoading ? (){} : (){
+            context.read<LogoutCubit>().logout();
+          },
+            text: state is LogoutLoading ? 'Patientez...' : 'Déconnexion',),
+    );
+  },
+),
       ],
     ),
-  );
+  ),
+);
 }

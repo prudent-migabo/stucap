@@ -184,10 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   color:
                                                       AppThemeData.textGreen),
                                             ),
-                                      const SizedBox(height: 10),
-                                      Align(
-                                        alignment: Alignment.center,
-                                          child: customCheckCard(isTrue: double.parse(studentModel.academicFees) < 300 ? false : true)),
+                                      // const SizedBox(height: 10),
+                                      // Align(
+                                      //   alignment: Alignment.center,
+                                      //     child: customCheckCard(isTrue: double.parse(studentModel.academicFees) < 300 ? false : true)),
                                     ],
                                   );
                                 }),
