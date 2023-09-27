@@ -10,7 +10,7 @@ class UpdatePresenceLoading extends UpdatePresenceState {}
 class UpdatePresenceLoaded extends UpdatePresenceState {}
 
 class UpdatePresenceError extends UpdatePresenceState {
-  CustomError message;
+  String message;
 
   UpdatePresenceError({
     required this.message,

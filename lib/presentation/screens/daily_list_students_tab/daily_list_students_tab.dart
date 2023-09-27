@@ -15,13 +15,10 @@ class DailyListStudentTab extends StatefulWidget {
 
 class _DailyListStudentTabState extends State<DailyListStudentTab> {
 
-  final StudentsRepository _repository = StudentsRepository();
-
-   String filterReference = '';
+  String filterReference = '';
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<PromotionCubit>().state;
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
@@ -32,48 +29,72 @@ class _DailyListStudentTabState extends State<DailyListStudentTab> {
             Icons.arrow_back_ios_new,
           ),
         ),
-        title: Text(MethodsHelper.sortAppbarTitle1(state)),
+        title: Text(context.watch<DrawerCubit>().state == 'P0'
+            ? 'L0'
+            : context.watch<DrawerCubit>().state == 'P1'
+            ? 'L1'
+            : context.watch<DrawerCubit>().state == 'P2'
+            ? 'L2'
+            : context.watch<DrawerCubit>().state == 'P3'
+            ? 'L3'
+            : context.watch<DrawerCubit>().state == 'P4'
+            ? 'M1'
+            : context.watch<DrawerCubit>().state == 'P5'
+            ? 'M2'
+            : 'L0'),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20),
-        child: StreamBuilder<List<StudentModel>>(
-            stream: _repository.listPresentStudents(MethodsHelper.sortStreamTitle(state)),
-            builder: (context, snapshot) {
-              List<StudentModel>? listStudents = snapshot.data;
-              if (!snapshot.hasData || listStudents!.isEmpty) {
-                return noDataBanner();
-              } else
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return noDataBanner();
-              } else if (snapshot.hasError) {
-                errorDialog(context,
-                    content: CustomError(message: snapshot.error.toString()));
-              }
-              return ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: listStudents.length,
-                  itemBuilder: (context, index) {
-                    final data = listStudents[index];
-                    return Column(
-                      children: [
-                        customListTile(
-                          title: '${data.middleName} ${data.lastName}',
-                          subtitle: Text('FA: ${data.academicFees}\$'),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 70),
-                          child: Divider(
-                            thickness: 0.3,
-                            color: AppThemeData.backgroundGrey,
+        child: Builder(
+          builder: (context) {
+            final drawerState = context.select((DrawerCubit cubit) => cubit.state);
+            return BlocBuilder<StudentCubit, StudentState>(
+              builder: (context, state) {
+                List<StudentModel> listStudents = state.students.where((element) {
+                  String value = drawerState == 'P0'
+                      ? 'L0'
+                      : drawerState == 'P1'
+                      ? 'L1'
+                      : drawerState == 'P2'
+                      ? 'L2'
+                      : drawerState == 'P3'
+                      ? 'L3'
+                      : drawerState == 'P4'
+                      ? 'M1'
+                      : drawerState == 'P5'
+                      ? 'M2'
+                      : 'L0';
+                  return element.promotion == value;
+                }).where((element) {
+                  return element.presenceStatus == true;
+                }).toList();
+                return listStudents.isEmpty ? const CustomNoData() : ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: listStudents.length,
+                    itemBuilder: (context, index) {
+                      final data = listStudents[index];
+                      return Column(
+                        children: [
+                          customListTile(
+                            title: '${data.firstName} ${data.middleName} ${data.lastName}',
+                            subtitle: Text('FA: ${data.academicFees.toString()}${data.devise}'),
                           ),
-                        ),
-                      ],
-                    );
-                  });
-            }
-        ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 70),
+                            child: Divider(
+                              thickness: 0.3,
+                              color: AppThemeData.backgroundGrey,
+                            ),
+                          ),
+                        ],
+                      );
+                    });
+              },
+            );
+          }
+        )
       ),
     );
   }

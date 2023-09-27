@@ -82,7 +82,7 @@ void scanVerificationPopup(BuildContext context, {required Widget? content, requ
 
 
 /// Method that throws an error dialog box for the entire app
-void errorDialog(BuildContext context, {required CustomError? content}) {
+void errorDialog(BuildContext context, {required String content}) {
   Widget okButton() {
     return TextButton(onPressed: () => Navigator.pop(context), child: Text(
       'OK',
@@ -103,7 +103,7 @@ void errorDialog(BuildContext context, {required CustomError? content}) {
       ),
     ),
     content: Text(
-      content!.message,
+      content,
     ),
     actions: [
       okButton(),

@@ -13,7 +13,7 @@ Widget navigationDrawer (BuildContext context){
   return BlocListener<LogoutCubit, LogoutState>(
   listener: (context, state) {
     if (state is LogoutError){
-      errorDialog(context, content: CustomError(message: state.message.toString()));
+      errorDialog(context, content: state.message.toString());
     } else if (state is LogoutLoaded){
       successToast(message: 'Deconnecté avec succès');
       Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
@@ -31,7 +31,7 @@ Widget navigationDrawer (BuildContext context){
           color: AppThemeData.primaryColor,
           child: Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 40,
                 backgroundColor: AppThemeData.backgroundGrey,
                 child: Icon(Icons.person),
@@ -59,42 +59,42 @@ Widget navigationDrawer (BuildContext context){
               customDrawerListTile(
                 title: DataValues.drawerDescription1,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(1);
+                  context.read<DrawerCubit>().selectIndex(0);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription2,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(2);
+                  context.read<DrawerCubit>().selectIndex(1);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription3,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(3);
+                  context.read<DrawerCubit>().selectIndex(2);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription4,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(4);
+                  context.read<DrawerCubit>().selectIndex(3);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription5,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(5);
+                  context.read<DrawerCubit>().selectIndex(4);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),
               customDrawerListTile(
                 title: DataValues.drawerDescription6,
                 onPressed: (){
-                  context.read<PromotionCubit>().addPromotion(6);
+                  context.read<DrawerCubit>().selectIndex(6);
                   Navigator.pushNamed(context, ListStudentsScreen.routeName);
                 }
               ),

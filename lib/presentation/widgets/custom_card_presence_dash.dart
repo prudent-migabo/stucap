@@ -4,12 +4,10 @@ import 'package:stucap/config/app_theme.dart';
 import '../../static/statics.dart';
 
 class CustomCardPresenceDash extends StatelessWidget {
-  const CustomCardPresenceDash({Key? key, required this.title, this.onTap, required this.description1, required this.description2}) : super(key: key);
+  const CustomCardPresenceDash({Key? key, required this.title, this.onTap,}) : super(key: key);
 
   final String title;
   final VoidCallback? onTap;
-  final String description1;
-  final String description2;
 
   @override
   Widget build(BuildContext context) {
@@ -32,34 +30,16 @@ class CustomCardPresenceDash extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      color: AppThemeData.textBlack,
-                      fontSize: 27,
-                      fontWeight: bold,
-                    ),
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: AppThemeData.textBlack,
+                    fontSize: 27,
+                    fontWeight: bold,
                   ),
-                  const SizedBox(height: 10,),
-                  Text("$description1 inscrits",
-                    style: TextStyle(
-                      color: AppThemeData.primaryColor,
-                      fontWeight: bold,
-                    ),
-                  ),
-                  const SizedBox(height: 5,),
-                  Text("$description2 présents",
-                    style: TextStyle(
-                      color: AppThemeData.textGreen,
-                      fontWeight: bold,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ],

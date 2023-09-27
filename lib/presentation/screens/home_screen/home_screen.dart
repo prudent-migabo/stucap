@@ -32,8 +32,14 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         scanResultFinal = scanResult;
       });
+      print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% $scanResult');
     } on PlatformException {
       scanResult = 'Erreur de scannage';
+      print('#####################################################');
+      errorDialog(context, content: 'Une erreur de scan est survenue');
+    } catch(e){
+      print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
+      errorDialog(context, content: 'Une erreur de scan est survenue');
     }
   }
 
@@ -107,94 +113,103 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomCard(
                     onTap: () {
-                      scanQrCode(context).whenComplete(() {
-                        scanVerificationPopup(context,
-                            content: StreamBuilder<StudentModel>(
-                                stream: StudentsRepository()
-                                    .studentModel(scanResultFinal),
-                                builder: (context, snapshot) {
-                                  StudentModel? studentModel = snapshot.data;
-                                  if (!snapshot.hasData ||
-                                      studentModel == null) {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
+                      try {
+                        scanQrCode(context).whenComplete(() {
+                          scanVerificationPopup(context,
+                              content: StreamBuilder<StudentModel>(
+                                  stream: StudentsRepository()
+                                      .studentModel(scanResultFinal),
+                                  builder: (context, snapshot) {
+                                    StudentModel? studentModel = snapshot.data;
+                                    if (!snapshot.hasData ||
+                                        studentModel == null) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      errorDialog(context, content: 'Une erreur de scan est survenue');
+                                    } else if (studentModel.studentID!.isEmpty){
+                                      errorDialog(context, content: 'Une erreur de scan est survenue');
+                                    }
+                                    return studentModel.studentID!.isEmpty ? const Center(child: Text('Une erreur de scan de vérification est survenue'),) :Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Center(
+                                          child: CustomAvatarImage(
+                                            radius: 40,
+                                            imgUrl: 'https://media.istockphoto.com/id/1390650720/photo/digital-network-connection-abstract-connection-of-dots-and-lines-technology-background-plexus.webp?b=1&s=170667a&w=0&k=20&c=SUkUz3EzbbcC25vGSHdV_9MxR0Mun8giVcuHoyOKwDo=',
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        customRowPopupInfo(
+                                            title: DataValues.studentTitle,
+                                            description: '${studentModel.firstName!} ${studentModel.middleName!} ${studentModel.lastName!}'),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        customRowPopupInfo(
+                                            title: DataValues.promotionTitle,
+                                            description: studentModel.promotion!),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        customRowPopupInfo(
+                                            title:
+                                            DataValues.academicFeesPaidTitle,
+                                            description:
+                                            studentModel.academicFees.toString()),
+                                        const SizedBox(
+                                          height: 10,
+                                        ),
+                                        customRowPopupInfo(
+                                            title: DataValues
+                                                .academicFeesPaidDescription,
+                                            description: DataValues
+                                                .academicFeesDescription),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        studentModel.academicFees! <
+                                            300
+                                            ? Text(
+                                          DataValues
+                                              .negativeVerificationMessage,
+                                          style: TextStyle(
+                                              fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                                              fontWeight: bold,
+                                              color: AppThemeData
+                                                  .errorTextColor),
+                                        )
+                                            : Text(
+                                          DataValues
+                                              .positiveVerificationMessage,
+                                          style: TextStyle(
+                                              fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                                              fontWeight: bold,
+                                              color:
+                                              AppThemeData.textGreen),
+                                        ),
+                                      ],
                                     );
-                                  }
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  } else if (snapshot.hasError) {
-                                    errorDialog(context,
-                                        content: CustomError(
-                                            message:
-                                                snapshot.error.toString()));
-                                  }
-                                  return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      customRowPopupInfo(
-                                          title: DataValues.studentTitle,
-                                          description: studentModel.middleName),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      customRowPopupInfo(
-                                          title: DataValues.promotionTitle,
-                                          description: studentModel.promotion),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      customRowPopupInfo(
-                                          title:
-                                              DataValues.academicFeesPaidTitle,
-                                          description:
-                                              studentModel.academicFees),
-                                      const SizedBox(
-                                        height: 10,
-                                      ),
-                                      customRowPopupInfo(
-                                          title: DataValues
-                                              .academicFeesPaidDescription,
-                                          description: DataValues
-                                              .academicFeesDescription),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      double.parse(studentModel.academicFees) <
-                                              300
-                                          ? Text(
-                                              DataValues
-                                                  .negativeVerificationMessage,
-                                              style: TextStyle(
-                                                fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
-                                                  fontWeight: bold,
-                                                  color: AppThemeData
-                                                      .errorTextColor),
-                                            )
-                                          : Text(
-                                              DataValues
-                                                  .positiveVerificationMessage,
-                                              style: TextStyle(
-                                                fontSize: AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
-                                                  fontWeight: bold,
-                                                  color:
-                                                      AppThemeData.textGreen),
-                                            ),
-                                      // const SizedBox(height: 10),
-                                      // Align(
-                                      //   alignment: Alignment.center,
-                                      //     child: customCheckCard(isTrue: double.parse(studentModel.academicFees) < 300 ? false : true)),
-                                    ],
-                                  );
-                                }),
-                            title: 'Vérification', onPressed: () {
-                          Navigator.pop(context);
-                        }, hasPaid: true);
-                      });
+                                  }),
+                              title: 'Vérification', onPressed: () {
+                                Navigator.pop(context);
+                              }, hasPaid: true);
+                        });
+                      } catch(e){
+                        errorDialog(context, content: 'Une erreur de scan est survenue');
+                      }
+
                     },
                     cardTitle: DataValues.homeCardTitle2,
                     isOnBlackBackground: true,

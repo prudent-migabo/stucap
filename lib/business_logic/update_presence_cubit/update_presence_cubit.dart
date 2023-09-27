@@ -9,13 +9,13 @@ class UpdatePresenceCubit extends Cubit<UpdatePresenceState> {
 
   final StudentsRepository _repository = StudentsRepository();
 
-  Future updatePresence (String uid) async {
+  Future updatePresence (String studentID) async {
     try{
       emit(UpdatePresenceLoading());
-      await _repository.updatePresenceStatus(uid);
+      await _repository.updatePresenceStatus(studentID);
       emit(UpdatePresenceLoaded());
-    } on CustomError catch (e){
-      emit(UpdatePresenceError(message: e));
+    } catch (e){
+      emit(UpdatePresenceError(message: e.toString()));
       rethrow;
     }
   }

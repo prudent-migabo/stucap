@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           successToast(message: 'Bienvenue');
           Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
         } else if (state is LoginError){
-          errorDialog(context, content: CustomError(message: state.message.toString()));
+          errorDialog(context, content: state.message.toString());
         }
       },
       child: Scaffold(

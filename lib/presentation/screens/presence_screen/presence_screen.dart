@@ -38,69 +38,95 @@ class PresenceScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GridView.count(
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(1);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                    title: 'L0',
-                  description1: '100',
-                  description2: '5',
-                ),
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(2);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                  title: 'L1',
-                  description1: '120', description2: '10',
-                ),
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(3);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                  title: 'L2',
-                  description1: '70', description2: '20',
-                ),
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(4);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                  title: 'L3',
-                  description1: '80', description2: '27',
-                ),
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(5);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                  title: 'M1',
-                  description1: '50', description2: '10',
-                ),
-                CustomCardPresenceDash(
-                    onTap: () {
-                      context.read<PromotionCubit>().addPromotion(6);
-                      Navigator.pushNamed(
-                          context, PresenceDetailsScreen.routeName);
-                    },
-                  title: 'M2',
-                  description1: '20', description2: '7',
-                ),
-              ],
+            Builder(
+              builder: (context) {
+                final drawerState =
+                context.select((DrawerCubit cubit) => cubit.state);
+                return Builder(
+                  builder: (context) {
+                    final state =
+                    context.select((StudentCubit cubit) => cubit.state);
+                    List<StudentModel> listStudents = state.students
+                        .where((element) {
+                      String value = drawerState == 'L0'
+                          ? 'L0'
+                          : drawerState == 'L1'
+                          ? 'L1'
+                          : drawerState == 'L2'
+                          ? 'L2'
+                          : drawerState == 'L3'
+                          ? 'L3'
+                          : drawerState == 'M1'
+                          ? 'M1'
+                          : drawerState == 'M2'
+                          ? 'M2'
+                          : 'L0';
+                      return element.promotion == value;
+                    })
+                        .where((element) {
+                      return element.inscriptionStatus == true;
+                    })
+                        .toList();
+                    return GridView.count(
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: [
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(0);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                            title: 'L0',
+                        ),
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(1);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                          title: 'L1',
+                        ),
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(2);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                          title: 'L2',
+                        ),
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(3);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                          title: 'L3',
+                        ),
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(4);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                          title: 'M1',
+                        ),
+                        CustomCardPresenceDash(
+                            onTap: () {
+                              context.read<DrawerCubit>().selectManagementIndex(5);
+                              Navigator.pushNamed(
+                                  context, PresenceDetailsScreen.routeName);
+                            },
+                          title: 'M2',
+                        ),
+                      ],
+                    );
+                  }
+                );
+              }
             )
           ],
         ),

@@ -9,6 +9,7 @@ import '../../../config/app_theme.dart';
 
 class ListStudentsScreen extends StatelessWidget {
   static const String routeName = '/ListStudentsScreen';
+
   ListStudentsScreen({Key? key, this.title}) : super(key: key);
 
   final StudentsRepository _repository = StudentsRepository();
@@ -16,54 +17,86 @@ class ListStudentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<PromotionCubit>().state;
     return Scaffold(
       appBar: customAppBar(
-        onBackEvent: (){
-          Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+        onBackEvent: () {
+          Navigator.pop(context);
+          // Navigator.pushNamedAndRemoveUntil(
+          //     context, HomeScreen.routeName, (route) => false);
         },
-        title: MethodsHelper.sortAppbarTitle2(state),
+        title: context.watch<DrawerCubit>().state == 'L0'
+            ? 'L0'
+            : context.watch<DrawerCubit>().state == 'L1'
+                ? 'L1'
+                : context.watch<DrawerCubit>().state == 'L2'
+                    ? 'L2'
+                    : context.watch<DrawerCubit>().state == 'L3'
+                        ? 'L3'
+                        : context.watch<DrawerCubit>().state == 'M1'
+                            ? 'M1'
+                            : context.watch<DrawerCubit>().state == 'M2'
+                                ? 'M2'
+                                : 'L0',
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-        child: StreamBuilder<List<StudentModel>>(
-          stream: _repository.listRegisteredStudents(MethodsHelper.sortStreamTitle(state)),
-          builder: (context, snapshot) {
-            List<StudentModel>? listStudents = snapshot.data;
-            if (!snapshot.hasData || listStudents!.isEmpty) {
-              return noDataBanner();
-            } else
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return noDataBanner();
-            } else if (snapshot.hasError) {
-              errorDialog(context,
-                  content: CustomError(message: snapshot.error.toString()));
-            }
-            return ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: listStudents.length,
-                itemBuilder: (context, index){
-                  final data = listStudents[index];
-                  return Column(
-                    children: [
-                      customListTile(
-                        title: '${data.middleName} ${data.lastName}',
-                        subtitle: Text('FA: ${data.academicFees}\$'),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 70),
-                        child: Divider(
-                          height: 1,
-                          thickness: 0.3,
-                          color: AppThemeData.backgroundGrey,
-                        ),
-                      ),
-                    ],
-                  );
-                });
-          }
-        ),
+        child: Builder(builder: (context) {
+          final drawerState =
+              context.select((DrawerCubit cubit) => cubit.state);
+          return BlocBuilder<StudentCubit, StudentState>(
+            builder: (context, state) {
+              print('ooooooooooooooooooooooooooooo ${state.students}');
+              List<StudentModel> listStudents = state.students
+                  .where((element) {
+                    String value = drawerState == 'L0'
+                        ? 'L0'
+                        : drawerState == 'L1'
+                            ? 'L1'
+                            : drawerState == 'L2'
+                                ? 'L2'
+                                : drawerState == 'L3'
+                                    ? 'L3'
+                                    : drawerState == 'M1'
+                                        ? 'M1'
+                                        : drawerState == 'M2'
+                                            ? 'M2'
+                                            : 'L0';
+                    return element.promotion == value;
+                  })
+                  .where((element) {
+               return element.inscriptionStatus == true;
+              })
+                  .toList();
+              return listStudents.isEmpty
+                  ? const CustomNoData()
+                  : ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: listStudents.length,
+                      itemBuilder: (context, index) {
+                        final data = listStudents[index];
+                        return Column(
+                          children: [
+                            customListTile(
+                              title:
+                                  '${data.middleName} ${data.middleName} ${data.lastName}',
+                              subtitle: Text(
+                                  'FA: ${data.academicFees.toString()}${data.devise}'),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 70),
+                              child: Divider(
+                                height: 1,
+                                thickness: 0.3,
+                                color: AppThemeData.backgroundGrey,
+                              ),
+                            ),
+                          ],
+                        );
+                      });
+            },
+          );
+        }),
       ),
     );
   }

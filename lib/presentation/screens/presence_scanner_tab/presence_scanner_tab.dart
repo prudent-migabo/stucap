@@ -32,6 +32,9 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
       });
     } on PlatformException {
       scanResult = 'Erreur de scannage';
+      errorDialog(context, content: 'Une erreur de scan est survenue');
+    } catch(e){
+      errorDialog(context, content: 'Une erreur de scan est survenue');
     }
   }
 
@@ -60,28 +63,36 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
                       );
                     } else if (snapshot.hasError) {
                       errorDialog(context,
-                          content:
-                              CustomError(message: snapshot.error.toString()));
+                          content: "Une erreur est survenue");
                     }
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        const Center(
+                          child: CustomAvatarImage(
+                            radius: 40,
+                            imgUrl: 'https://media.istockphoto.com/id/1390650720/photo/digital-network-connection-abstract-connection-of-dots-and-lines-technology-background-plexus.webp?b=1&s=170667a&w=0&k=20&c=SUkUz3EzbbcC25vGSHdV_9MxR0Mun8giVcuHoyOKwDo=',
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         customRowPopupInfo(
                             title: DataValues.studentTitle,
-                            description: studentModel.middleName),
+                            description: '${studentModel.firstName!} ${studentModel.middleName!} ${studentModel.lastName!}'),
                         const SizedBox(
                           height: 10,
                         ),
                         customRowPopupInfo(
                             title: DataValues.promotionTitle,
-                            description: studentModel.promotion),
+                            description: studentModel.promotion!),
                         const SizedBox(
                           height: 10,
                         ),
                         customRowPopupInfo(
                             title: DataValues.academicFeesPaidTitle,
-                            description: studentModel.academicFees),
+                            description: studentModel.academicFees.toString()),
                         const SizedBox(
                           height: 10,
                         ),
@@ -106,7 +117,7 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
           });
         } else if (state is UpdatePresenceError) {
           errorDialog(context,
-              content: CustomError(message: state.message.toString()));
+              content: 'Une erreur de scan est survenue.');
         }
       },
       child: Scaffold(
@@ -119,19 +130,19 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
               Icons.arrow_back_ios_new,
             ),
           ),
-          title: BlocBuilder<PromotionCubit, PromotionState>(
+          title: BlocBuilder<DrawerCubit, String>(
             builder: (context, state) {
-              return Text(state.index == 1
+              return Text(state == 'P0'
                   ? 'L0'
-                  : state.index == 2
+                  : state == 'P1'
                       ? 'L1'
-                      : state.index == 3
+                      : state == 'P2'
                           ? 'L2'
-                          : state.index == 4
+                          : state == 'P3'
                               ? 'L3'
-                              : state.index == 5
+                              : state == 'P4'
                                   ? 'M1'
-                                  : state.index == 6
+                                  : state == 'P5'
                                       ? 'M2'
                                       : 'L0');
             },

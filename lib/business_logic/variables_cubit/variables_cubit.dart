@@ -9,6 +9,10 @@ class PromotionCubit extends Cubit<PromotionState> {
     emit(PromotionStateInitial(index));
   }
 
+  void addPromotion1 (){
+    emit(State1(value: 'L0'));
+  }
+
   void addPromotion2 (){
     emit(State1(value: 'L1'));
   }

@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LogoutCubit()),
         BlocProvider(create: (context) => PromotionCubit()),
         BlocProvider(create: (context) => UpdatePresenceCubit()),
+        BlocProvider<StudentCubit>(create: (context) => StudentCubit()),
+        BlocProvider<DrawerCubit>(create: (context) => DrawerCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

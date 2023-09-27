@@ -22,6 +22,9 @@ dependencies:
   flutter_barcode_scanner:
   barcode_widget:
   fluttertoast:
+  image_picker:
+  equatable:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
