@@ -35,7 +35,7 @@ class AppThemeData {
 
   // Radius
   static const double cornerRadiusCard = 40.0;
-  static const double cornerRadiusCardButton = 20.0;
+  static const double cornerRadiusCardButton = 10.0;
   static const double cornerRadiusTextFields = 10.0;
 
   // Light Theme
@@ -75,7 +75,7 @@ class AppThemeData {
     inputDecorationTheme:  InputDecorationTheme(
       fillColor: AppThemeData.backgroundWhite,
       filled: true,
-      contentPadding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+      contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(cornerRadiusTextFields),
         borderSide: const BorderSide(color: backgroundGrey),
@@ -90,9 +90,11 @@ class AppThemeData {
       ),
       hintStyle: const TextStyle(
         color: textGrey,
+        fontSize: 14,
       ),
       labelStyle: const TextStyle(
         color: textGrey,
+        fontSize: 14,
       ),
     ),
     appBarTheme: const AppBarTheme(

@@ -4,11 +4,12 @@ import 'package:stucap/static/statics.dart';
 import '../../config/app_theme.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key, required this.onPressed, required this.text, this.backgroundColor}) : super(key: key);
+  const CustomButton({Key? key, required this.onPressed, required this.text, this.backgroundColor, this.textColor}) : super(key: key);
 
   final VoidCallback onPressed;
   final String text;
   final Color? backgroundColor;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,8 @@ class CustomButton extends StatelessWidget {
       ),
       child: Text(text,
         style: TextStyle(
-          fontWeight: bold,
+          fontWeight: FontWeight.w600,
+          color: textColor ?? Colors.white
         ),
       ),
     );

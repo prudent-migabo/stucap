@@ -15,18 +15,18 @@ class CustomCardPresenceDash extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 5,
-        color: AppThemeData.backgroundWhite,
+         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0, right: 10),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0, right: 10),
               child: Align(
                 alignment: Alignment.topRight,
-                child: const Icon(Icons.more_vert),
+                child: Icon(Icons.more_vert),
               ),
             ),
             Padding(

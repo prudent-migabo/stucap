@@ -28,7 +28,7 @@ class PresenceScreen extends StatelessWidget {
             },
             child: const Padding(
             padding: EdgeInsets.only(right: 20),
-            child: Icon(Icons.home),
+            child: Icon(Icons.home, color: Colors.white,),
         ),
           ),
     ],

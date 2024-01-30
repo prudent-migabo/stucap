@@ -128,6 +128,7 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
             },
             child: const Icon(
               Icons.arrow_back_ios_new,
+              color: Colors.white,
             ),
           ),
           title: BlocBuilder<DrawerCubit, String>(
@@ -160,11 +161,11 @@ class _PresenceScannerTabState extends State<PresenceScannerTab> {
                         .updatePresence(scanResultFinal);
                   });
                 },
-                child: Text(
+                child: const Text(
                   DataValues.presencesScannerButtonTitle,
                   style: TextStyle(
-                    fontWeight: AppThemeData
-                        .lightTheme.textTheme.titleMedium!.fontWeight,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),

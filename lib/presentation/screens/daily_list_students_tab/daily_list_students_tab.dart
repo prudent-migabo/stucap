@@ -27,6 +27,7 @@ class _DailyListStudentTabState extends State<DailyListStudentTab> {
           },
           child: const Icon(
             Icons.arrow_back_ios_new,
+            color: Colors.white,
           ),
         ),
         title: Text(context.watch<DrawerCubit>().state == 'P0'

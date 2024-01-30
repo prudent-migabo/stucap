@@ -21,21 +21,23 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is LoginLoaded){
+        if (state is LoginLoaded) {
           successToast(message: 'Bienvenue');
-          Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
-        } else if (state is LoginError){
+          Navigator.pushNamedAndRemoveUntil(
+              context, HomeScreen.routeName, (route) => false);
+        } else if (state is LoginError) {
           errorDialog(context, content: state.message.toString());
         }
       },
       child: Scaffold(
         body: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal:25),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -43,10 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   DataValues.loginTitle,
                   style: TextStyle(
                     color: AppThemeData.primaryColor,
-                    fontSize:
-                    AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
-                    fontWeight:
-                    AppThemeData
+                    fontSize: AppThemeData
+                        .lightTheme.textTheme.displayMedium!.fontSize,
+                    fontWeight: AppThemeData
                         .lightTheme.textTheme.titleLarge!.fontWeight,
                   ),
                 ),
@@ -54,8 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   DataValues.loginDescription,
                   style: TextStyle(
                     color: AppThemeData.primaryColor,
-                    fontSize:
-                    AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                    fontSize: 15,
                     fontWeight: bold,
                   ),
                 ),
@@ -87,16 +87,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                     height: 50,
                     child: BlocBuilder<LoginCubit, LoginState>(
-  builder: (context, state) {
-    return
-      CustomButton(
-                      onPressed: state is LoginLoading ? (){} : () {
-                         context.read<LoginCubit>().login(email: _email.text.trim(), password: _password.text.trim());
-                      },
-                      text: state is LoginLoading ? DataValues.waitingText : DataValues.loginElevatedButtonTitle,
+                      builder: (context, state) {
+                        return CustomButton(
+                          backgroundColor: AppThemeData.buttonPrimary,
+                          onPressed: state is LoginLoading
+                              ? () {}
+                              : () {
+                                  context.read<LoginCubit>().login(
+                                      email: _email.text.trim(),
+                                      password: _password.text.trim());
+                                },
+                          text: state is LoginLoading
+                              ? DataValues.waitingText
+                              : DataValues.loginElevatedButtonTitle,
                         );
-  },
-)),
+                      },
+                    )),
               ],
             ),
           ),

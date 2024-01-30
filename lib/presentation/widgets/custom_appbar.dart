@@ -6,7 +6,7 @@ PreferredSize customAppBar ({required VoidCallback onBackEvent, required String 
       child: AppBar(
     leading: GestureDetector(
       onTap: onBackEvent,
-      child: const Icon(Icons.arrow_back_ios_new,),
+      child: const Icon(Icons.arrow_back_ios_new, color: Colors.white,),
     ),
         title: Text(title),
         actions: actions,

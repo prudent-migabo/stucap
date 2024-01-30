@@ -50,9 +50,9 @@ Widget navigationDrawer (BuildContext context){
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(DataValues.drawerTitle1,
+              const Text(DataValues.drawerTitle1,
                 style: TextStyle(
-                  fontWeight: bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 10,),
@@ -99,9 +99,9 @@ Widget navigationDrawer (BuildContext context){
                 }
               ),
               const SizedBox(height: 15,),
-              Text(DataValues.drawerTitle2,
+              const Text(DataValues.drawerTitle2,
                 style: TextStyle(
-                  fontWeight: bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 10,),

@@ -45,7 +45,6 @@ class ListStudentsScreen extends StatelessWidget {
               context.select((DrawerCubit cubit) => cubit.state);
           return BlocBuilder<StudentCubit, StudentState>(
             builder: (context, state) {
-              print('ooooooooooooooooooooooooooooo ${state.students}');
               List<StudentModel> listStudents = state.students
                   .where((element) {
                     String value = drawerState == 'L0'
@@ -81,7 +80,11 @@ class ListStudentsScreen extends StatelessWidget {
                               title:
                                   '${data.middleName} ${data.middleName} ${data.lastName}',
                               subtitle: Text(
-                                  'FA: ${data.academicFees.toString()}${data.devise}'),
+                                  'FA: ${data.academicFees.toString()}${data.devise}',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
                             ),
                             const Padding(
                               padding: EdgeInsets.only(left: 70),

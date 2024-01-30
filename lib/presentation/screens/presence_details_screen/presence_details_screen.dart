@@ -37,12 +37,17 @@ class _PresenceDetailsScreenState extends State<PresenceDetailsScreen> {
           });
         },
         currentIndex: _index,
-        selectedLabelStyle: TextStyle(
-          fontSize: AppThemeData.lightTheme.textTheme.titleSmall!.fontSize,
+        iconSize: 23,
+        selectedLabelStyle: const TextStyle(
+          fontSize: 12,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontSize: 12,
         ),
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.qr_code_scanner), label: 'Scanner',
+              icon: Icon(Icons.qr_code_scanner),
+            label: 'Scanner',
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.list), label: 'Liste'
