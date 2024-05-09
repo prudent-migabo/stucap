@@ -32,13 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         scanResultFinal = scanResult;
       });
-      print('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% $scanResult');
     } on PlatformException {
       scanResult = 'Erreur de scannage';
-      print('#####################################################');
       errorDialog(context, content: 'Une erreur de scan est survenue');
     } catch(e){
-      print('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
       errorDialog(context, content: 'Une erreur de scan est survenue');
     }
   }

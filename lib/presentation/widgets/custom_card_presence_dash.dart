@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:stucap/config/app_theme.dart';
 
 import '../../static/statics.dart';
@@ -22,15 +24,17 @@ class CustomCardPresenceDash extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 10.0, right: 10),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Icon(Icons.more_vert),
+            Expanded(
+              child: const Padding(
+                padding: EdgeInsets.only(top: 10.0, right: 10),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Icon(Icons.more_vert),
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+            Expanded(
+              flex: 1,
               child: Center(
                 child: Text(
                   title,
@@ -42,6 +46,20 @@ class CustomCardPresenceDash extends StatelessWidget {
                 ),
               ),
             ),
+            Spacer(),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 15.0),
+            //   child: Center(
+            //     child: Text(
+            //       title,
+            //       style: TextStyle(
+            //         color: AppThemeData.textBlack,
+            //         fontSize: 27,
+            //         fontWeight: bold,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
